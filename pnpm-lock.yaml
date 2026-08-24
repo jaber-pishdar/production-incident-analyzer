@@ -26,15 +26,15 @@ importers:
 
   apps/api:
     dependencies:
-      '@pia/correlation':
+      '@pia/error-analyzer':
         specifier: workspace:*
-        version: link:../../engines/correlation
-      '@pia/error-analysis':
+        version: link:../../packages/error-analyzer
+      '@pia/incident-engine':
         specifier: workspace:*
-        version: link:../../engines/error-analysis
-      '@pia/performance-analysis':
+        version: link:../../packages/incident-engine
+      '@pia/performance-analyzer':
         specifier: workspace:*
-        version: link:../../engines/performance-analysis
+        version: link:../../packages/performance-analyzer
       '@pia/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -89,11 +89,11 @@ importers:
         specifier: ^5.2.12
         version: 5.4.21(@types/node@20.19.43)
 
-  engines/correlation:
+  packages/correlation-engine:
     dependencies:
       '@pia/shared':
         specifier: workspace:*
-        version: link:../../packages/shared
+        version: link:../shared
     devDependencies:
       typescript:
         specifier: ^5.4.5
@@ -102,11 +102,11 @@ importers:
         specifier: ^1.6.0
         version: 1.6.1(@types/node@20.19.43)(supports-color@8.1.1)
 
-  engines/error-analysis:
+  packages/error-analyzer:
     dependencies:
       '@pia/shared':
         specifier: workspace:*
-        version: link:../../packages/shared
+        version: link:../shared
     devDependencies:
       typescript:
         specifier: ^5.4.5
@@ -115,11 +115,33 @@ importers:
         specifier: ^1.6.0
         version: 1.6.1(@types/node@20.19.43)(supports-color@8.1.1)
 
-  engines/performance-analysis:
+  packages/incident-engine:
+    dependencies:
+      '@pia/correlation-engine':
+        specifier: workspace:*
+        version: link:../correlation-engine
+      '@pia/error-analyzer':
+        specifier: workspace:*
+        version: link:../error-analyzer
+      '@pia/performance-analyzer':
+        specifier: workspace:*
+        version: link:../performance-analyzer
+      '@pia/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.43)(supports-color@8.1.1)
+
+  packages/performance-analyzer:
     dependencies:
       '@pia/shared':
         specifier: workspace:*
-        version: link:../../packages/shared
+        version: link:../shared
     devDependencies:
       typescript:
         specifier: ^5.4.5

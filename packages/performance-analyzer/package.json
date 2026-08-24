@@ -1,5 +1,5 @@
 {
-  "name": "@pia/performance-analysis",
+  "name": "@pia/performance-analyzer",
   "version": "0.1.0",
   "private": true,
   "type": "module",
