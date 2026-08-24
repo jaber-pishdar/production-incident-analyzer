@@ -1,0 +1,22 @@
+{
+  "name": "production-incident-analyzer",
+  "private": true,
+  "description": "Correlate application errors with API performance degradation to identify root-cause signals.",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @pia/api dev\" \"pnpm --filter @pia/web dev\"",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5",
+    "@types/node": "^20.12.12",
+    "vitest": "^1.6.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@pia/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "echo ok"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

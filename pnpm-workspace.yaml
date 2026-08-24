@@ -1,0 +1,6 @@
+packages:
+  - "engines/*"
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  esbuild: true
