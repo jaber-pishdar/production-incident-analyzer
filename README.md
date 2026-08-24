@@ -247,6 +247,12 @@ pnpm test run    # E2E: full pipeline from raw data → incident → root cause
 | GET | `/api/correlations` | Correlation signals |
 | GET | `/api/timeline/:incidentId` | Incident timeline events |
 
+## Related Project
+
+### [Production Error Analyzer](https://github.com/jaber-pishdar/production-error-analyzer)
+
+A specialized component focused on production log analysis and error pattern detection. This project evolved from that foundation — what started as a dedicated log parser and error grouping tool is now an integrated investigation platform that connects errors with performance, deployments, and root-cause signals.
+
 ## Why I Built This
 
 I wanted to build a tool that reflects how production incidents really work — not just a log viewer or a metrics dashboard, but a system that connects the dots between errors, performance, and deployments.
