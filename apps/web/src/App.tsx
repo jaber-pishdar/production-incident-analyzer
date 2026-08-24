@@ -4,6 +4,7 @@ import OverviewCards from './components/OverviewCards';
 import IncidentCard from './components/IncidentCard';
 import TimelineView from './components/TimelineView';
 import EvidencePanel from './components/EvidencePanel';
+import InvestigationView from './components/InvestigationView';
 import { postParse, postTraces, getIncident, getDashboard } from './api';
 import './styles.css';
 
@@ -13,7 +14,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [logsInput, setLogsInput] = useState('');
   const [tracesInput, setTracesInput] = useState('');
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'incident'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'incident' | 'investigate'>('dashboard');
 
   const refresh = useCallback(async () => {
     try {
@@ -64,6 +65,7 @@ export default function App() {
         <div className="header-right">
           <button className="tab-btn" data-active={activeTab === 'dashboard'} onClick={() => setActiveTab('dashboard')}>Dashboard</button>
           <button className="tab-btn" data-active={activeTab === 'incident'} onClick={() => setActiveTab('incident')}>Incident</button>
+          <button className="tab-btn" data-active={activeTab === 'investigate'} onClick={() => setActiveTab('investigate')}>Investigate</button>
           <a className="header-link" href="https://github.com/jaber-pishdar/production-incident-analyzer" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </header>
@@ -154,6 +156,10 @@ export default function App() {
             <TimelineView events={incident.timeline} />
             <EvidencePanel signals={incident.rootCauseSignals.length > 0 ? incident.rootCauseSignals : incident.correlations} />
           </>
+        )}
+
+        {incident && activeTab === 'investigate' && (
+          <InvestigationView incident={incident} />
         )}
 
         {!dashboard && !loading && (
