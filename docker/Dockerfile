@@ -4,6 +4,7 @@ WORKDIR /app
 
 # Copy workspace config
 COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
+COPY tsconfig.base.json ./
 
 # Copy all package.json files for dependency resolution
 COPY packages/shared/package.json ./packages/shared/
