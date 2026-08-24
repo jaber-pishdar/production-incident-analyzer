@@ -181,10 +181,13 @@ export interface Deployment {
 
 export interface CorrelationSignal {
   id: string;
-  type: 'error-error' | 'error-trace' | 'error-endpoint' | 'trace-bottleneck' | 'deployment-regression';
+  type: 'error-error' | 'error-trace' | 'error-endpoint' | 'trace-bottleneck' | 'deployment-regression' | 'latency-error-correlation';
   confidence: 'low' | 'medium' | 'high';
   title: string;
   description: string;
+  likelyRootCause: string;
+  // Quantitative evidence supporting the correlation
+  evidence: EvidenceItem[];
   // Correlated entities
   errorEvents?: ErrorEvent[];
   requestTraces?: RequestTrace[];
@@ -193,6 +196,15 @@ export interface CorrelationSignal {
   // How the correlation was made
   matchBy: ('requestId' | 'traceId' | 'endpoint' | 'service' | 'timeWindow' | 'deploymentVersion')[];
   timeWindow: { from: string; to: string };
+}
+
+export interface EvidenceItem {
+  fact: string;
+  metric: string;
+  beforeValue: number | string;
+  afterValue: number | string;
+  ratio: number;
+  unit: string;
 }
 
 // ─── Incident ─── //

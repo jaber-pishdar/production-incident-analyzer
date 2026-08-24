@@ -21,7 +21,8 @@ export function buildDashboard(params: {
   };
   const correlations = correlationEngine.correlate({
     errorGroups: groups, errorEvents: errors, requestTraces: traces,
-    endpoints: perf.endpoints, deployments, timeWindow,
+    endpoints: perf.endpoints, bottlenecks: perf.bottlenecks,
+    stageSummary: perf.stageSummary, deployments, timeWindow,
   });
   const rootCauseSignals = correlationEngine.findRootCause(correlations);
   const totalErrors = errors.length;
