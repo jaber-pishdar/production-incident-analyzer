@@ -77,7 +77,9 @@ export interface RequestTrace extends EventContext {
   statusCode: number;
   durationMs: number;
   spans: Span[];
+  stages: StageBreakdown;
   error?: string;
+  timeout?: boolean;
 }
 
 export interface Span {
@@ -87,6 +89,48 @@ export interface Span {
   type: 'http' | 'db' | 'cache' | 'queue' | 'external' | 'internal';
   status: 'ok' | 'error' | 'slow';
   detail?: string;
+}
+
+export type ProcessingStage = 'middleware' | 'authentication' | 'application' | 'database' | 'external_api' | 'serialization';
+
+export interface StageBreakdown {
+  middleware: number;       // ms spent in middleware
+  authentication: number;  // ms spent in auth
+  application: number;      // ms spent in business logic
+  database: number;         // ms spent in database queries
+  external_api: number;     // ms spent in external API calls
+  serialization: number;    // ms spent in response serialization
+}
+
+export interface SlowRequest {
+  traceId: string;
+  method: string;
+  endpoint: string;
+  durationMs: number;
+  thresholdMs: number;
+  slowStage: ProcessingStage | null;
+  stageDurationMs: number;
+  timestamp: string;
+}
+
+export interface TimeoutEvent {
+  traceId: string;
+  method: string;
+  endpoint: string;
+  durationMs: number;
+  timeoutMs: number;
+  timestamp: string;
+}
+
+export interface LatencySpike {
+  endpointKey: string;
+  method: string;
+  path: string;
+  timeWindow: string;
+  baselineAvgMs: number;
+  spikeAvgMs: number;
+  ratio: number;
+  requestCount: number;
 }
 
 // ─── Endpoint ─── //
@@ -208,4 +252,39 @@ export interface RegressionResult {
   ratio: number;
   releaseTime: string;
   message: string;
+}
+
+// ─── Performance Analysis Report ─── //
+
+export interface PerformanceReport {
+  endpoints: Endpoint[];
+  slowestEndpoint: Endpoint | null;
+  totalRequests: number;
+  totalErrors: number;
+  overallErrorRate: number;
+  bottlenecks: Bottleneck[];
+  slowRequests: SlowRequest[];
+  timeoutEvents: TimeoutEvent[];
+  latencySpikes: LatencySpike[];
+  stageSummary: StageSummaryItem[];
+  candidateBottlenecks: Bottleneck[];
+}
+
+export interface StageSummaryItem {
+  stage: ProcessingStage;
+  totalMs: number;
+  avgMs: number;
+  p95Ms: number;
+  shareOfTotal: number; // percentage 0-100
+  requestCount: number;
+}
+
+export interface Bottleneck {
+  spanType: Span['type'];
+  stage?: ProcessingStage;
+  service: string;
+  avgMs: number;
+  p95Ms: number;
+  impact: 'low' | 'medium' | 'high' | 'critical';
+  description: string;
 }
