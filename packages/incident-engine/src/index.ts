@@ -36,6 +36,7 @@ export function buildDashboard(params: {
       uniqueErrorGroups: groups.length,
       criticalErrors: groups.filter((g) => g.severity === 'critical').length,
       totalRequests: perf.totalRequests,
+      totalLogEntries: logs.length,
       overallErrorRate: perf.overallErrorRate,
       correlationCount: correlations.length,
     },

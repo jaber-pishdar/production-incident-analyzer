@@ -110,6 +110,7 @@ export default function App() {
               latencyPercent={latencyPercent}
               affectedEndpoints={dashboard.endpoints.length}
               totalRequests={dashboard.summary.totalRequests}
+              totalLogEntries={dashboard.summary.totalLogEntries}
             />
             <div className="section">
               <h2>Error Groups</h2>
@@ -165,6 +166,7 @@ export default function App() {
               latencyPercent={latencyPercent}
               affectedEndpoints={incident.affectedEndpoints.length}
               totalRequests={incident.summary.totalRequests}
+              totalLogEntries={incident.summary.totalLogEntries}
             />
             <IncidentCard incident={incident} />
             <TimelineView events={incident.timeline} />

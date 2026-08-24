@@ -1,0 +1,755 @@
+2026-08-24T09:00:38Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 2600ms
+2026-08-24T09:00:20Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:00:10Z ERROR Authentication token expired for user 1761
+2026-08-24T09:00:47Z FATAL Out of memory: heap allocation failed for 3197MB request
+2026-08-24T09:01:25Z ERROR Authentication token expired for user 1666
+2026-08-24T09:01:41Z INFO Request completed: GET /api/health in 2631ms
+2026-08-24T09:01:28Z INFO Request completed: GET /api/products in 1496ms
+2026-08-24T09:01:44Z WARN Connection pool nearing capacity: 5937/10 connections active
+2026-08-24T09:01:28Z INFO Rate limit status: 8063/100 requests used
+2026-08-24T09:01:20Z INFO Request completed: POST /api/users in 6035ms
+2026-08-24T09:02:07Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T09:02:49Z FATAL Critical: Database connection pool exhausted — 5323/10 connections active for over 41s
+2026-08-24T09:02:59Z ERROR Cache write failed: Redis connection refused after 3791 retries
+2026-08-24T09:02:12Z INFO Request completed: GET /api/health in 9639ms
+2026-08-24T09:02:27Z WARN Queue backlog: 1999 messages pending in order-processing
+2026-08-24T09:03:44Z FATAL Out of memory: heap allocation failed for 6094MB request
+2026-08-24T09:03:48Z INFO Request completed: GET /api/health in 6597ms
+2026-08-24T09:03:50Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 5672ms
+2026-08-24T09:03:21Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x2507
+2026-08-24T09:04:42Z INFO Rate limit status: 3075/100 requests used
+2026-08-24T09:04:58Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 9902ms
+2026-08-24T09:04:52Z INFO Request completed: GET /api/health in 1200ms
+2026-08-24T09:04:55Z INFO Request completed: POST /api/users in 2858ms
+2026-08-24T09:05:57Z ERROR Database connection failed: timeout after 15ms
+2026-08-24T09:05:58Z ERROR GET /api/users/136 500 — User profile not found but schema mismatch
+2026-08-24T09:05:54Z ERROR Authentication token expired for user 8072
+2026-08-24T09:05:03Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:05:28Z FATAL Critical: Database connection pool exhausted — 625/10 connections active for over 1s
+2026-08-24T09:06:33Z WARN Connection pool nearing capacity: 6362/10 connections active
+2026-08-24T09:06:24Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 2477ms
+2026-08-24T09:06:42Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:06:01Z FATAL Critical: Database connection pool exhausted — 8737/10 connections active for over 101s
+2026-08-24T09:07:18Z INFO Rate limit status: 1707/100 requests used
+2026-08-24T09:07:31Z WARN Deprecated endpoint /api/v1/users called from IP 3123.61.5808.83
+2026-08-24T09:07:12Z WARN Deprecated endpoint /api/v1/users called from IP 3203.55.8269.4
+2026-08-24T09:07:31Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 6436ms
+2026-08-24T09:07:50Z FATAL Out of memory: heap allocation failed for 6265MB request
+2026-08-24T09:07:29Z INFO Health check passed — all services reachable
+2026-08-24T09:07:35Z INFO Request completed: GET /api/health in 5436ms
+2026-08-24T09:08:24Z WARN Queue backlog: 5567 messages pending in order-processing
+2026-08-24T09:08:24Z WARN Memory usage: 2519% of heap threshold
+2026-08-24T09:08:45Z INFO Connection pool: 3981/10 active connections
+2026-08-24T09:08:17Z WARN Connection pool nearing capacity: 1983/10 connections active
+2026-08-24T09:08:28Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T09:08:20Z FATAL Critical: Database connection pool exhausted — 505/10 connections active for over 18s
+2026-08-24T09:09:13Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 3668ms
+2026-08-24T09:09:01Z WARN Memory usage: 7810% of heap threshold
+2026-08-24T09:09:57Z WARN Memory usage: 8553% of heap threshold
+2026-08-24T09:09:16Z FATAL Out of memory: heap allocation failed for 6321MB request
+2026-08-24T09:09:14Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x8347
+2026-08-24T09:09:28Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 5131ms
+2026-08-24T09:10:42Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x6440
+2026-08-24T09:10:30Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 9372ms
+2026-08-24T09:10:30Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:10:54Z WARN Queue backlog: 7913 messages pending in order-processing
+2026-08-24T09:10:05Z INFO Request completed: POST /api/users in 5236ms
+2026-08-24T09:11:18Z INFO Request completed: GET /api/products in 660ms
+2026-08-24T09:11:33Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x3136
+2026-08-24T09:11:03Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:11:48Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:11:46Z ERROR Failed to deserialize response from payment-service: unexpected token at position 7933
+2026-08-24T09:11:19Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:11:19Z INFO Cache hit for key user:9842
+2026-08-24T09:12:46Z FATAL Critical: Database connection pool exhausted — 7776/10 connections active for over 98s
+2026-08-24T09:12:45Z WARN Queue backlog: 8569 messages pending in order-processing
+2026-08-24T09:12:58Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x76
+2026-08-24T09:12:22Z FATAL Out of memory: heap allocation failed for 98MB request
+2026-08-24T09:13:33Z INFO Rate limit status: 145/100 requests used
+2026-08-24T09:13:35Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:13:53Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 3338ms
+2026-08-24T09:13:31Z WARN Connection pool nearing capacity: 7284/10 connections active
+2026-08-24T09:13:54Z FATAL Critical: Database connection pool exhausted — 9240/10 connections active for over 13s
+2026-08-24T09:13:54Z ERROR Authentication token expired for user 1890
+2026-08-24T09:13:14Z FATAL Critical: Database connection pool exhausted — 1844/10 connections active for over 108s
+2026-08-24T09:14:16Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:14:29Z WARN Queue backlog: 7268 messages pending in order-processing
+2026-08-24T09:14:33Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 8739ms
+2026-08-24T09:14:46Z ERROR Cache write failed: Redis connection refused after 8436 retries
+2026-08-24T09:15:54Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:15:40Z INFO Scheduled job check-orders completed in 7901ms
+2026-08-24T09:15:52Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:15:32Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:15:00Z FATAL Out of memory: heap allocation failed for 1369MB request
+2026-08-24T09:15:44Z INFO Connection pool: 1929/10 active connections
+2026-08-24T09:15:15Z ERROR Database connection failed: timeout after 3180ms
+2026-08-24T09:16:06Z FATAL Out of memory: heap allocation failed for 7119MB request
+2026-08-24T09:16:13Z INFO Connection pool: 3353/10 active connections
+2026-08-24T09:16:27Z WARN Response time exceeded 2s for POST /api/orders (9523ms)
+2026-08-24T09:16:01Z WARN Queue backlog: 6894 messages pending in order-processing
+2026-08-24T09:16:42Z WARN Deprecated endpoint /api/v1/users called from IP 1805.47.8737.4
+2026-08-24T09:17:20Z INFO Scheduled job check-orders completed in 2887ms
+2026-08-24T09:17:22Z FATAL Critical: Database connection pool exhausted — 9616/10 connections active for over 70s
+2026-08-24T09:17:07Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:17:32Z WARN Connection pool nearing capacity: 5439/10 connections active
+2026-08-24T09:17:29Z INFO Request completed: POST /api/users in 2318ms
+2026-08-24T09:17:30Z WARN Memory usage: 262% of heap threshold
+2026-08-24T09:17:24Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 7024ms
+2026-08-24T09:18:04Z INFO Scheduled job check-orders completed in 3601ms
+2026-08-24T09:18:59Z INFO Scheduled job check-orders completed in 4891ms
+2026-08-24T09:18:58Z ERROR Cache write failed: Redis connection refused after 8350 retries
+2026-08-24T09:18:21Z INFO Cache hit for key user:2909
+2026-08-24T09:18:08Z INFO Rate limit status: 3306/100 requests used
+2026-08-24T09:18:09Z ERROR Database connection failed: timeout after 9561ms
+2026-08-24T09:19:02Z WARN Queue backlog: 4645 messages pending in order-processing
+2026-08-24T09:19:41Z INFO Health check passed — all services reachable
+2026-08-24T09:19:11Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 5234ms
+2026-08-24T09:19:26Z INFO Connection pool: 4830/10 active connections
+2026-08-24T09:19:18Z FATAL Critical: Database connection pool exhausted — 9475/10 connections active for over 93s
+2026-08-24T09:19:09Z WARN Connection pool nearing capacity: 4655/10 connections active
+2026-08-24T09:20:45Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 6435ms
+2026-08-24T09:20:34Z INFO Rate limit status: 7101/100 requests used
+2026-08-24T09:20:35Z WARN Queue backlog: 2574 messages pending in order-processing
+2026-08-24T09:20:37Z INFO Health check passed — all services reachable
+2026-08-24T09:21:13Z INFO Request completed: GET /api/products in 586ms
+2026-08-24T09:21:56Z WARN Connection pool nearing capacity: 1190/10 connections active
+2026-08-24T09:21:11Z WARN Response time exceeded 2s for POST /api/orders (7700ms)
+2026-08-24T09:21:10Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 8274ms
+2026-08-24T09:22:38Z FATAL Critical: Database connection pool exhausted — 2486/10 connections active for over 18s
+2026-08-24T09:22:21Z WARN Deprecated endpoint /api/v1/users called from IP 1451.38.573.103
+2026-08-24T09:22:51Z FATAL Critical: Database connection pool exhausted — 5689/10 connections active for over 108s
+2026-08-24T09:22:37Z WARN Deprecated endpoint /api/v1/users called from IP 4041.113.311.110
+2026-08-24T09:22:28Z FATAL Critical: Database connection pool exhausted — 635/10 connections active for over 43s
+2026-08-24T09:22:19Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:23:23Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x6292
+2026-08-24T09:23:21Z WARN Memory usage: 5393% of heap threshold
+2026-08-24T09:23:18Z FATAL Critical: Database connection pool exhausted — 2373/10 connections active for over 87s
+2026-08-24T09:23:50Z WARN Response time exceeded 2s for POST /api/orders (7805ms)
+2026-08-24T09:23:38Z WARN Response time exceeded 2s for POST /api/orders (9298ms)
+2026-08-24T09:23:13Z WARN Connection pool nearing capacity: 9405/10 connections active
+2026-08-24T09:24:29Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:24:18Z ERROR Authentication token expired for user 9470
+2026-08-24T09:24:53Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:24:16Z ERROR Failed to deserialize response from payment-service: unexpected token at position 1175
+2026-08-24T09:24:25Z WARN Connection pool nearing capacity: 6816/10 connections active
+2026-08-24T09:24:04Z INFO Cache hit for key user:7147
+2026-08-24T09:24:37Z WARN Connection pool nearing capacity: 5376/10 connections active
+2026-08-24T09:25:41Z FATAL Critical: Database connection pool exhausted — 718/10 connections active for over 103s
+2026-08-24T09:25:58Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:25:59Z WARN Memory usage: 455% of heap threshold
+2026-08-24T09:25:14Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x2586
+2026-08-24T09:25:29Z ERROR Cache write failed: Redis connection refused after 9529 retries
+2026-08-24T09:25:05Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T09:25:04Z INFO Scheduled job check-orders completed in 3669ms
+2026-08-24T09:26:30Z INFO Rate limit status: 6125/100 requests used
+2026-08-24T09:26:01Z WARN Response time exceeded 2s for POST /api/orders (2638ms)
+2026-08-24T09:26:53Z INFO Health check passed — all services reachable
+2026-08-24T09:26:07Z INFO Request completed: GET /api/products in 7099ms
+2026-08-24T09:27:23Z FATAL Out of memory: heap allocation failed for 216MB request
+2026-08-24T09:27:31Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 8977ms
+2026-08-24T09:27:41Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 5204ms
+2026-08-24T09:27:26Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:28:32Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x5590
+2026-08-24T09:28:38Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 1604ms
+2026-08-24T09:28:25Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x5275
+2026-08-24T09:28:55Z INFO Connection pool: 2858/10 active connections
+2026-08-24T09:28:02Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x9769
+2026-08-24T09:28:20Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x3062
+2026-08-24T09:28:27Z FATAL Critical: Database connection pool exhausted — 3111/10 connections active for over 13s
+2026-08-24T09:29:24Z WARN Memory usage: 1766% of heap threshold
+2026-08-24T09:29:57Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:29:25Z ERROR Cache write failed: Redis connection refused after 3024 retries
+2026-08-24T09:29:56Z FATAL Out of memory: heap allocation failed for 7055MB request
+2026-08-24T09:29:17Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T09:29:42Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x2264
+2026-08-24T09:30:48Z ERROR Authentication token expired for user 8512
+2026-08-24T09:30:04Z ERROR GET /api/users/5220 500 — User profile not found but schema mismatch
+2026-08-24T09:30:15Z INFO Rate limit status: 1426/100 requests used
+2026-08-24T09:30:49Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x2580
+2026-08-24T09:31:22Z FATAL Critical: Database connection pool exhausted — 3294/10 connections active for over 70s
+2026-08-24T09:31:11Z INFO Connection pool: 9345/10 active connections
+2026-08-24T09:31:50Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 3412ms
+2026-08-24T09:31:37Z ERROR Authentication token expired for user 9881
+2026-08-24T09:31:07Z FATAL Out of memory: heap allocation failed for 8136MB request
+2026-08-24T09:32:05Z FATAL Critical: Database connection pool exhausted — 8891/10 connections active for over 105s
+2026-08-24T09:32:42Z INFO Request completed: POST /api/users in 3218ms
+2026-08-24T09:32:55Z WARN Deprecated endpoint /api/v1/users called from IP 3192.104.6661.81
+2026-08-24T09:32:22Z INFO Health check passed — all services reachable
+2026-08-24T09:32:56Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 9871ms
+2026-08-24T09:33:43Z ERROR Failed to deserialize response from payment-service: unexpected token at position 9907
+2026-08-24T09:33:11Z FATAL Out of memory: heap allocation failed for 1651MB request
+2026-08-24T09:33:04Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T09:33:04Z WARN Memory usage: 5295% of heap threshold
+2026-08-24T09:33:20Z WARN Deprecated endpoint /api/v1/users called from IP 4111.112.531.99
+2026-08-24T09:33:20Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 3278ms
+2026-08-24T09:34:49Z INFO Scheduled job check-orders completed in 2499ms
+2026-08-24T09:34:34Z FATAL Critical: Database connection pool exhausted — 4029/10 connections active for over 38s
+2026-08-24T09:34:31Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:34:12Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 3291ms
+2026-08-24T09:35:25Z INFO Health check passed — all services reachable
+2026-08-24T09:35:47Z FATAL Out of memory: heap allocation failed for 6763MB request
+2026-08-24T09:35:46Z INFO Scheduled job check-orders completed in 7379ms
+2026-08-24T09:35:50Z WARN Connection pool nearing capacity: 8872/10 connections active
+2026-08-24T09:36:38Z INFO Request completed: GET /api/products in 1558ms
+2026-08-24T09:36:07Z ERROR Cache write failed: Redis connection refused after 1156 retries
+2026-08-24T09:36:15Z WARN Connection pool nearing capacity: 5516/10 connections active
+2026-08-24T09:36:17Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:36:41Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:37:10Z INFO Request completed: POST /api/users in 8149ms
+2026-08-24T09:37:16Z WARN Connection pool nearing capacity: 6492/10 connections active
+2026-08-24T09:37:53Z WARN Queue backlog: 4996 messages pending in order-processing
+2026-08-24T09:37:34Z WARN Memory usage: 9809% of heap threshold
+2026-08-24T09:37:43Z INFO Health check passed — all services reachable
+2026-08-24T09:38:11Z ERROR Authentication token expired for user 8920
+2026-08-24T09:38:33Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:38:54Z INFO Cache hit for key user:6880
+2026-08-24T09:38:27Z INFO Health check passed — all services reachable
+2026-08-24T09:39:13Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x4447
+2026-08-24T09:39:53Z ERROR Cache write failed: Redis connection refused after 7033 retries
+2026-08-24T09:39:19Z INFO Request completed: GET /api/health in 523ms
+2026-08-24T09:39:48Z INFO Cache hit for key user:1897
+2026-08-24T09:40:49Z INFO Request completed: GET /api/health in 3414ms
+2026-08-24T09:40:28Z INFO Rate limit status: 6729/100 requests used
+2026-08-24T09:40:01Z FATAL Out of memory: heap allocation failed for 44MB request
+2026-08-24T09:40:45Z ERROR GET /api/users/3514 500 — User profile not found but schema mismatch
+2026-08-24T09:40:57Z FATAL Critical: Database connection pool exhausted — 8260/10 connections active for over 118s
+2026-08-24T09:40:03Z INFO Request completed: POST /api/users in 168ms
+2026-08-24T09:41:41Z INFO Health check passed — all services reachable
+2026-08-24T09:41:37Z INFO Connection pool: 7284/10 active connections
+2026-08-24T09:41:28Z ERROR Cache write failed: Redis connection refused after 8229 retries
+2026-08-24T09:41:54Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:41:47Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x7518
+2026-08-24T09:41:25Z FATAL Critical: Database connection pool exhausted — 8276/10 connections active for over 118s
+2026-08-24T09:42:14Z WARN Deprecated endpoint /api/v1/users called from IP 1116.45.5517.93
+2026-08-24T09:42:39Z INFO Request completed: GET /api/products in 9061ms
+2026-08-24T09:42:31Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:42:17Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:43:42Z INFO Scheduled job check-orders completed in 4812ms
+2026-08-24T09:43:41Z FATAL Critical: Database connection pool exhausted — 3272/10 connections active for over 5s
+2026-08-24T09:43:24Z WARN Response time exceeded 2s for POST /api/orders (2094ms)
+2026-08-24T09:43:44Z ERROR GET /api/users/2198 500 — User profile not found but schema mismatch
+2026-08-24T09:43:30Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x4351
+2026-08-24T09:43:23Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x467
+2026-08-24T09:44:22Z INFO Cache hit for key user:563
+2026-08-24T09:44:46Z WARN Memory usage: 5103% of heap threshold
+2026-08-24T09:44:08Z ERROR Database connection failed: timeout after 6199ms
+2026-08-24T09:44:23Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:44:18Z WARN Response time exceeded 2s for POST /api/orders (627ms)
+2026-08-24T09:45:30Z INFO Cache hit for key user:1363
+2026-08-24T09:45:42Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 5486ms
+2026-08-24T09:45:59Z INFO Request completed: POST /api/users in 3849ms
+2026-08-24T09:45:37Z ERROR Authentication token expired for user 7523
+2026-08-24T09:45:22Z INFO Request completed: GET /api/products in 929ms
+2026-08-24T09:45:38Z ERROR GET /api/users/6640 500 — User profile not found but schema mismatch
+2026-08-24T09:45:21Z WARN Connection pool nearing capacity: 6113/10 connections active
+2026-08-24T09:46:32Z ERROR Database connection failed: timeout after 7963ms
+2026-08-24T09:46:07Z INFO Request completed: GET /api/products in 9420ms
+2026-08-24T09:46:06Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:46:13Z INFO Request completed: POST /api/users in 233ms
+2026-08-24T09:46:57Z WARN Deprecated endpoint /api/v1/users called from IP 6320.85.1522.6
+2026-08-24T09:47:34Z ERROR Failed to deserialize response from payment-service: unexpected token at position 5430
+2026-08-24T09:47:06Z FATAL Out of memory: heap allocation failed for 748MB request
+2026-08-24T09:47:59Z WARN Response time exceeded 2s for POST /api/orders (6933ms)
+2026-08-24T09:47:59Z INFO Connection pool: 4719/10 active connections
+2026-08-24T09:48:42Z ERROR Authentication token expired for user 3127
+2026-08-24T09:48:58Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:48:47Z INFO Scheduled job check-orders completed in 7998ms
+2026-08-24T09:48:28Z ERROR Cache write failed: Redis connection refused after 2033 retries
+2026-08-24T09:48:52Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T09:49:14Z INFO Request completed: POST /api/users in 2238ms
+2026-08-24T09:49:33Z ERROR Authentication token expired for user 2351
+2026-08-24T09:49:28Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:49:41Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 246ms
+2026-08-24T09:49:12Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T09:49:38Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:49:46Z ERROR Failed to deserialize response from payment-service: unexpected token at position 3768
+2026-08-24T09:50:18Z INFO Request completed: POST /api/users in 4695ms
+2026-08-24T09:50:30Z INFO Cache hit for key user:6279
+2026-08-24T09:50:30Z ERROR Failed to deserialize response from payment-service: unexpected token at position 1935
+2026-08-24T09:50:54Z INFO Request completed: POST /api/users in 4004ms
+2026-08-24T09:50:41Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:51:08Z INFO Rate limit status: 9117/100 requests used
+2026-08-24T09:51:52Z FATAL Out of memory: heap allocation failed for 1948MB request
+2026-08-24T09:51:54Z INFO Connection pool: 8127/10 active connections
+2026-08-24T09:51:12Z WARN Queue backlog: 4772 messages pending in order-processing
+2026-08-24T09:52:47Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:52:56Z INFO Rate limit status: 559/100 requests used
+2026-08-24T09:52:02Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x2536
+2026-08-24T09:52:42Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T09:52:54Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T09:52:47Z INFO Connection pool: 4936/10 active connections
+2026-08-24T09:53:52Z WARN Response time exceeded 2s for POST /api/orders (1944ms)
+2026-08-24T09:53:31Z INFO Request completed: GET /api/products in 522ms
+2026-08-24T09:53:14Z ERROR Authentication token expired for user 4228
+2026-08-24T09:53:37Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T09:53:08Z FATAL Out of memory: heap allocation failed for 4464MB request
+2026-08-24T09:53:59Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 5688ms
+2026-08-24T09:54:52Z WARN Response time exceeded 2s for POST /api/orders (3489ms)
+2026-08-24T09:54:37Z WARN Connection pool nearing capacity: 3835/10 connections active
+2026-08-24T09:54:45Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:54:00Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 2097ms
+2026-08-24T09:55:22Z WARN Memory usage: 2124% of heap threshold
+2026-08-24T09:55:12Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T09:55:49Z INFO Request completed: GET /api/health in 2697ms
+2026-08-24T09:55:59Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 8973ms
+2026-08-24T10:00:05Z INFO Deployment v2.8.1 started — rolling update for order-service
+2026-08-24T10:00:18Z INFO Deployment v2.8.1 completed — 3 pods updated successfully
+2026-08-24T10:00:22Z INFO Health check passed for order-service v2.8.1
+2026-08-24T10:01:20Z INFO Health check passed — all services reachable
+2026-08-24T10:01:07Z WARN Queue backlog: 5486 messages pending in order-processing
+2026-08-24T10:01:30Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:01:51Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:01:14Z ERROR Authentication token expired for user 9129
+2026-08-24T10:01:33Z INFO Request completed: POST /api/users in 4927ms
+2026-08-24T10:01:41Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:01:52Z WARN Memory usage: 4842% of heap threshold
+2026-08-24T10:01:06Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:01:09Z FATAL Out of memory: heap allocation failed for 2246MB request
+2026-08-24T10:02:15Z INFO Cache hit for key user:2118
+2026-08-24T10:02:50Z WARN Response time exceeded 2s for POST /api/orders (2004ms)
+2026-08-24T10:02:25Z ERROR Failed to deserialize response from payment-service: unexpected token at position 3517
+2026-08-24T10:02:43Z INFO Request completed: GET /api/health in 9341ms
+2026-08-24T10:02:59Z ERROR Database connection failed: timeout after 4115ms
+2026-08-24T10:02:37Z WARN Deprecated endpoint /api/v1/users called from IP 2372.77.4668.74
+2026-08-24T10:02:30Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:02:50Z FATAL Out of memory: heap allocation failed for 9461MB request
+2026-08-24T10:02:20Z WARN Memory usage: 9044% of heap threshold
+2026-08-24T10:02:18Z ERROR Failed to deserialize response from payment-service: unexpected token at position 8636
+2026-08-24T10:02:57Z INFO Request completed: GET /api/products in 8888ms
+2026-08-24T10:02:01Z WARN Deprecated endpoint /api/v1/users called from IP 3013.96.1373.16
+2026-08-24T10:03:16Z INFO Scheduled job check-orders completed in 2686ms
+2026-08-24T10:03:04Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:03:43Z ERROR Cache write failed: Redis connection refused after 1856 retries
+2026-08-24T10:03:48Z INFO Cache hit for key user:4114
+2026-08-24T10:03:02Z INFO Rate limit status: 7257/100 requests used
+2026-08-24T10:03:15Z FATAL Out of memory: heap allocation failed for 769MB request
+2026-08-24T10:03:13Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 9637ms
+2026-08-24T10:03:15Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:03:09Z INFO Scheduled job check-orders completed in 207ms
+2026-08-24T10:03:57Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x1789
+2026-08-24T10:03:55Z INFO Scheduled job check-orders completed in 4685ms
+2026-08-24T10:03:26Z INFO Health check passed — all services reachable
+2026-08-24T10:03:46Z WARN Queue backlog: 7412 messages pending in order-processing
+2026-08-24T10:03:17Z ERROR Authentication token expired for user 6076
+2026-08-24T10:03:25Z INFO Request completed: GET /api/health in 4807ms
+2026-08-24T10:04:50Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 2969ms
+2026-08-24T10:04:35Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:04:17Z FATAL Critical: Database connection pool exhausted — 6613/10 connections active for over 27s
+2026-08-24T10:04:00Z INFO Scheduled job check-orders completed in 12ms
+2026-08-24T10:04:07Z INFO Scheduled job check-orders completed in 2998ms
+2026-08-24T10:04:18Z ERROR Authentication token expired for user 6274
+2026-08-24T10:04:23Z WARN Memory usage: 9047% of heap threshold
+2026-08-24T10:04:10Z INFO Request completed: POST /api/users in 5653ms
+2026-08-24T10:04:07Z WARN Queue backlog: 4016 messages pending in order-processing
+2026-08-24T10:04:55Z WARN Memory usage: 8509% of heap threshold
+2026-08-24T10:05:23Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:05:46Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 29788ms
+2026-08-24T10:05:04Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:05:34Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 26245ms
+2026-08-24T10:05:56Z ERROR Cache write failed: Redis connection refused after 826 retries
+2026-08-24T10:05:02Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 1256ms
+2026-08-24T10:05:37Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:05:45Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:05:40Z INFO Request completed: GET /api/products in 9419ms
+2026-08-24T10:05:38Z ERROR Failed to deserialize response from payment-service: unexpected token at position 7969
+2026-08-24T10:05:42Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:05:23Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:05:14Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 15281ms
+2026-08-24T10:06:22Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 20017ms
+2026-08-24T10:06:23Z WARN Queue backlog: 8150 messages pending in order-processing
+2026-08-24T10:06:17Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:06:44Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 29293ms
+2026-08-24T10:06:23Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 11782ms
+2026-08-24T10:06:26Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 13791ms
+2026-08-24T10:06:51Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:06:27Z ERROR Failed to deserialize response from payment-service: unexpected token at position 2111
+2026-08-24T10:06:23Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 16668ms
+2026-08-24T10:06:28Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 29406ms
+2026-08-24T10:06:33Z INFO Scheduled job check-orders completed in 70ms
+2026-08-24T10:06:40Z WARN Connection pool nearing capacity: 3603/10 connections active
+2026-08-24T10:06:21Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:06:58Z ERROR GET /api/users/5608 500 — User profile not found but schema mismatch
+2026-08-24T10:06:00Z WARN Queue backlog: 452 messages pending in order-processing
+2026-08-24T10:06:52Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:06:21Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:06:12Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 6031ms
+2026-08-24T10:07:04Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 4198ms
+2026-08-24T10:07:20Z INFO Scheduled job check-orders completed in 9168ms
+2026-08-24T10:07:22Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 15191ms
+2026-08-24T10:07:21Z ERROR Failed to deserialize response from payment-service: unexpected token at position 4551
+2026-08-24T10:07:15Z WARN Deprecated endpoint /api/v1/users called from IP 7029.23.5132.37
+2026-08-24T10:07:49Z FATAL Out of memory: heap allocation failed for 4355MB request
+2026-08-24T10:07:34Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 17775ms
+2026-08-24T10:07:41Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 20999ms
+2026-08-24T10:07:44Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 267ms
+2026-08-24T10:07:26Z INFO Request completed: GET /api/products in 8757ms
+2026-08-24T10:07:28Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 21938ms
+2026-08-24T10:07:24Z ERROR Cache write failed: Redis connection refused after 6669 retries
+2026-08-24T10:07:35Z FATAL Out of memory: heap allocation failed for 3693MB request
+2026-08-24T10:07:03Z WARN Connection pool nearing capacity: 7509/10 connections active
+2026-08-24T10:08:42Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 8616ms
+2026-08-24T10:08:43Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 29210ms
+2026-08-24T10:08:38Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:08:51Z WARN Deprecated endpoint /api/v1/users called from IP 4840.25.9369.46
+2026-08-24T10:08:10Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x4398
+2026-08-24T10:08:56Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:08:20Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 11094ms
+2026-08-24T10:08:41Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:08:35Z WARN Response time exceeded 2s for POST /api/orders (7858ms)
+2026-08-24T10:08:47Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 21624ms
+2026-08-24T10:08:12Z FATAL Out of memory: heap allocation failed for 3963MB request
+2026-08-24T10:08:48Z INFO Connection pool: 2510/10 active connections
+2026-08-24T10:08:40Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 24569ms
+2026-08-24T10:09:21Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 14386ms
+2026-08-24T10:09:41Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 22006ms
+2026-08-24T10:09:39Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:09:45Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:09:19Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:09:42Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 29493ms
+2026-08-24T10:09:13Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 26447ms
+2026-08-24T10:09:13Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 20474ms
+2026-08-24T10:09:57Z FATAL Critical: Database connection pool exhausted — 2147/10 connections active for over 82s
+2026-08-24T10:09:41Z WARN Deprecated endpoint /api/v1/users called from IP 3277.67.354.24
+2026-08-24T10:09:46Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 21468ms
+2026-08-24T10:09:44Z INFO Request completed: GET /api/products in 8844ms
+2026-08-24T10:09:59Z ERROR Database connection failed: timeout after 7518ms
+2026-08-24T10:09:55Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 23733ms
+2026-08-24T10:09:39Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 5643ms
+2026-08-24T10:09:12Z WARN Memory usage: 4983% of heap threshold
+2026-08-24T10:09:21Z WARN Response time exceeded 2s for POST /api/orders (2343ms)
+2026-08-24T10:09:16Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 6637ms
+2026-08-24T10:09:48Z FATAL Critical: Database connection pool exhausted — 5499/10 connections active for over 88s
+2026-08-24T10:09:13Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:09:32Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:09:43Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 27028ms
+2026-08-24T10:10:44Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 19780ms
+2026-08-24T10:10:17Z INFO Health check passed — all services reachable
+2026-08-24T10:10:46Z FATAL Out of memory: heap allocation failed for 6239MB request
+2026-08-24T10:10:49Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 15295ms
+2026-08-24T10:10:25Z ERROR Database connection failed: timeout after 6860ms
+2026-08-24T10:10:15Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 22036ms
+2026-08-24T10:10:14Z WARN Memory usage: 5440% of heap threshold
+2026-08-24T10:10:38Z WARN Queue backlog: 8733 messages pending in order-processing
+2026-08-24T10:10:46Z INFO Request completed: GET /api/health in 1926ms
+2026-08-24T10:10:02Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 3021ms
+2026-08-24T10:10:29Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 5296ms
+2026-08-24T10:11:20Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 27993ms
+2026-08-24T10:11:28Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:11:45Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 9112ms
+2026-08-24T10:11:23Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 9962ms
+2026-08-24T10:11:30Z FATAL Out of memory: heap allocation failed for 7654MB request
+2026-08-24T10:11:06Z WARN Memory usage: 398% of heap threshold
+2026-08-24T10:11:54Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 20476ms
+2026-08-24T10:11:30Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 22683ms
+2026-08-24T10:11:44Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 26710ms
+2026-08-24T10:11:29Z INFO Request completed: POST /api/users in 1041ms
+2026-08-24T10:11:21Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 15322ms
+2026-08-24T10:11:43Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 12213ms
+2026-08-24T10:11:33Z WARN Memory usage: 6951% of heap threshold
+2026-08-24T10:11:52Z INFO Connection pool: 7212/10 active connections
+2026-08-24T10:11:25Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 13075ms
+2026-08-24T10:12:33Z WARN Deprecated endpoint /api/v1/users called from IP 9173.13.1133.109
+2026-08-24T10:12:38Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x3107
+2026-08-24T10:12:02Z INFO Request completed: POST /api/users in 8367ms
+2026-08-24T10:12:38Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:12:42Z ERROR Authentication token expired for user 588
+2026-08-24T10:12:57Z INFO Health check passed — all services reachable
+2026-08-24T10:12:31Z ERROR Database connection failed: timeout after 505ms
+2026-08-24T10:12:13Z FATAL Critical: Database connection pool exhausted — 9763/10 connections active for over 106s
+2026-08-24T10:12:12Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x4108
+2026-08-24T10:12:07Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 8945ms
+2026-08-24T10:12:19Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 20260ms
+2026-08-24T10:12:55Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 28529ms
+2026-08-24T10:12:36Z INFO Health check passed — all services reachable
+2026-08-24T10:12:53Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 17367ms
+2026-08-24T10:12:30Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 29830ms
+2026-08-24T10:12:42Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:12:34Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 26068ms
+2026-08-24T10:13:28Z ERROR Cache write failed: Redis connection refused after 7352 retries
+2026-08-24T10:13:03Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:13:55Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 23545ms
+2026-08-24T10:13:46Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 15777ms
+2026-08-24T10:13:55Z FATAL Out of memory: heap allocation failed for 7583MB request
+2026-08-24T10:13:20Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 15381ms
+2026-08-24T10:13:14Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x3962
+2026-08-24T10:13:11Z FATAL Critical: Database connection pool exhausted — 9139/10 connections active for over 46s
+2026-08-24T10:13:34Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 8294ms
+2026-08-24T10:13:59Z WARN Memory usage: 5647% of heap threshold
+2026-08-24T10:13:26Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x3451
+2026-08-24T10:13:40Z ERROR GET /api/users/995 500 — User profile not found but schema mismatch
+2026-08-24T10:13:03Z INFO Scheduled job check-orders completed in 9037ms
+2026-08-24T10:13:14Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 29961ms
+2026-08-24T10:13:12Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 24653ms
+2026-08-24T10:13:45Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 24758ms
+2026-08-24T10:13:25Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 13853ms
+2026-08-24T10:13:24Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 17003ms
+2026-08-24T10:14:15Z WARN Queue backlog: 8107 messages pending in order-processing
+2026-08-24T10:14:12Z WARN Connection pool nearing capacity: 36/10 connections active
+2026-08-24T10:14:20Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:14:23Z WARN Queue backlog: 5946 messages pending in order-processing
+2026-08-24T10:14:54Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 27430ms
+2026-08-24T10:14:01Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x1065
+2026-08-24T10:14:52Z FATAL Critical: Database connection pool exhausted — 2931/10 connections active for over 120s
+2026-08-24T10:14:37Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 17902ms
+2026-08-24T10:14:25Z WARN Connection pool nearing capacity: 6533/10 connections active
+2026-08-24T10:14:18Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 8846ms
+2026-08-24T10:15:56Z WARN Queue backlog: 2415 messages pending in order-processing
+2026-08-24T10:15:14Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x9079
+2026-08-24T10:15:24Z INFO Cache hit for key user:7212
+2026-08-24T10:15:32Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:15:24Z ERROR Cache write failed: Redis connection refused after 8490 retries
+2026-08-24T10:15:12Z INFO Request completed: POST /api/users in 7810ms
+2026-08-24T10:15:27Z INFO Health check passed — all services reachable
+2026-08-24T10:15:07Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:15:06Z INFO Connection pool: 32/10 active connections
+2026-08-24T10:15:45Z INFO Request completed: GET /api/products in 5713ms
+2026-08-24T10:15:50Z WARN Memory usage: 9009% of heap threshold
+2026-08-24T10:15:16Z FATAL Out of memory: heap allocation failed for 4633MB request
+2026-08-24T10:16:30Z WARN Response time exceeded 2s for POST /api/orders (4754ms)
+2026-08-24T10:16:55Z WARN Response time exceeded 2s for POST /api/orders (97ms)
+2026-08-24T10:16:41Z ERROR GET /api/users/202 500 — User profile not found but schema mismatch
+2026-08-24T10:16:34Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 852ms
+2026-08-24T10:16:08Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x6615
+2026-08-24T10:16:14Z ERROR Cache write failed: Redis connection refused after 3912 retries
+2026-08-24T10:16:30Z WARN Queue backlog: 6388 messages pending in order-processing
+2026-08-24T10:16:59Z FATAL Critical: Database connection pool exhausted — 1034/10 connections active for over 9s
+2026-08-24T10:16:35Z ERROR GET /api/users/6826 500 — User profile not found but schema mismatch
+2026-08-24T10:16:14Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:16:37Z INFO Cache hit for key user:4594
+2026-08-24T10:16:26Z FATAL Critical: Database connection pool exhausted — 3011/10 connections active for over 62s
+2026-08-24T10:16:23Z INFO Request completed: GET /api/products in 4695ms
+2026-08-24T10:16:37Z WARN Deprecated endpoint /api/v1/users called from IP 5044.29.9012.42
+2026-08-24T10:16:22Z FATAL Out of memory: heap allocation failed for 7470MB request
+2026-08-24T10:16:21Z WARN Connection pool nearing capacity: 4220/10 connections active
+2026-08-24T10:16:13Z WARN Connection pool nearing capacity: 7989/10 connections active
+2026-08-24T10:16:42Z FATAL Critical: Database connection pool exhausted — 9191/10 connections active for over 94s
+2026-08-24T10:16:12Z FATAL Out of memory: heap allocation failed for 9490MB request
+2026-08-24T10:16:56Z FATAL Critical: Database connection pool exhausted — 8959/10 connections active for over 106s
+2026-08-24T10:16:38Z WARN Memory usage: 5178% of heap threshold
+2026-08-24T10:16:44Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:16:27Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:16:32Z ERROR Database connection failed: timeout after 22687ms
+2026-08-24T10:17:50Z WARN Queue backlog: 3644 messages pending in order-processing
+2026-08-24T10:17:17Z WARN Queue backlog: 3575 messages pending in order-processing
+2026-08-24T10:17:51Z FATAL Out of memory: heap allocation failed for 2483MB request
+2026-08-24T10:17:28Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:17:38Z FATAL Critical: Database connection pool exhausted — 8561/10 connections active for over 60s
+2026-08-24T10:17:14Z WARN Connection pool nearing capacity: 7622/10 connections active
+2026-08-24T10:17:59Z FATAL Out of memory: heap allocation failed for 8712MB request
+2026-08-24T10:17:28Z WARN Memory usage: 7956% of heap threshold
+2026-08-24T10:17:25Z WARN Memory usage: 4304% of heap threshold
+2026-08-24T10:17:13Z INFO Health check passed — all services reachable
+2026-08-24T10:17:36Z WARN Response time exceeded 2s for POST /api/orders (1802ms)
+2026-08-24T10:17:31Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:18:12Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:18:46Z WARN Memory usage: 7563% of heap threshold
+2026-08-24T10:18:45Z FATAL Out of memory: heap allocation failed for 250MB request
+2026-08-24T10:18:59Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:18:53Z INFO Request completed: POST /api/users in 554ms
+2026-08-24T10:18:41Z ERROR Authentication token expired for user 1896
+2026-08-24T10:18:42Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:18:12Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:18:10Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 1612ms
+2026-08-24T10:18:27Z INFO Connection pool: 6400/10 active connections
+2026-08-24T10:18:34Z FATAL Out of memory: heap allocation failed for 701MB request
+2026-08-24T10:18:53Z FATAL Critical: Database connection pool exhausted — 7603/10 connections active for over 98s
+2026-08-24T10:18:11Z ERROR Cache write failed: Redis connection refused after 548 retries
+2026-08-24T10:18:44Z FATAL Out of memory: heap allocation failed for 7435MB request
+2026-08-24T10:18:57Z INFO Scheduled job check-orders completed in 6292ms
+2026-08-24T10:18:27Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:18:33Z ERROR Failed to deserialize response from payment-service: unexpected token at position 6304
+2026-08-24T10:18:30Z ERROR Failed to deserialize response from payment-service: unexpected token at position 3538
+2026-08-24T10:18:28Z INFO Request completed: GET /api/health in 1260ms
+2026-08-24T10:18:28Z WARN Memory usage: 2055% of heap threshold
+2026-08-24T10:18:44Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:18:26Z ERROR Database connection failed: timeout after 16103ms
+2026-08-24T10:19:22Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 5536ms
+2026-08-24T10:19:07Z WARN Queue backlog: 7529 messages pending in order-processing
+2026-08-24T10:19:59Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x8817
+2026-08-24T10:19:13Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 5294ms
+2026-08-24T10:19:47Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 4316ms
+2026-08-24T10:19:05Z INFO Connection pool: 2403/10 active connections
+2026-08-24T10:19:22Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:19:38Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x6676
+2026-08-24T10:19:00Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:19:59Z INFO Connection pool: 4992/10 active connections
+2026-08-24T10:19:29Z INFO Connection pool: 4946/10 active connections
+2026-08-24T10:19:39Z WARN Response time exceeded 2s for POST /api/orders (8460ms)
+2026-08-24T10:19:25Z WARN Deprecated endpoint /api/v1/users called from IP 5636.99.6792.117
+2026-08-24T10:19:34Z INFO Connection pool: 8766/10 active connections
+2026-08-24T10:19:44Z INFO Rate limit status: 3120/100 requests used
+2026-08-24T10:19:18Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 8914ms
+2026-08-24T10:19:24Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x4271
+2026-08-24T10:19:25Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:19:53Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:20:47Z ERROR GET /api/users/5453 500 — User profile not found but schema mismatch
+2026-08-24T10:20:26Z INFO Request completed: POST /api/users in 9682ms
+2026-08-24T10:20:33Z WARN Response time exceeded 2s for POST /api/orders (6427ms)
+2026-08-24T10:20:29Z INFO Request completed: POST /api/users in 2801ms
+2026-08-24T10:20:47Z INFO Scheduled job check-orders completed in 1854ms
+2026-08-24T10:20:19Z INFO Request completed: POST /api/users in 6673ms
+2026-08-24T10:20:29Z WARN Response time exceeded 2s for POST /api/orders (3122ms)
+2026-08-24T10:20:57Z ERROR GET /api/users/8075 500 — User profile not found but schema mismatch
+2026-08-24T10:20:43Z FATAL Critical: Database connection pool exhausted — 9030/10 connections active for over 72s
+2026-08-24T10:20:36Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 5701ms
+2026-08-24T10:20:12Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 8768ms
+2026-08-24T10:20:42Z ERROR GET /api/users/3745 500 — User profile not found but schema mismatch
+2026-08-24T10:20:38Z WARN Deprecated endpoint /api/v1/users called from IP 2888.102.5722.32
+2026-08-24T10:20:24Z WARN Response time exceeded 2s for POST /api/orders (8864ms)
+2026-08-24T10:20:37Z INFO Rate limit status: 5121/100 requests used
+2026-08-24T10:20:12Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:20:32Z ERROR Database connection failed: timeout after 19532ms
+2026-08-24T10:21:42Z ERROR Database connection failed: timeout after 699ms
+2026-08-24T10:21:36Z ERROR Cache write failed: Redis connection refused after 7532 retries
+2026-08-24T10:21:41Z WARN Memory usage: 812% of heap threshold
+2026-08-24T10:21:27Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:21:09Z WARN Connection pool nearing capacity: 5660/10 connections active
+2026-08-24T10:21:02Z INFO Connection pool: 7056/10 active connections
+2026-08-24T10:21:38Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:21:44Z WARN Memory usage: 4649% of heap threshold
+2026-08-24T10:21:59Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:21:05Z ERROR Database connection failed: timeout after 403ms
+2026-08-24T10:21:45Z WARN Response time exceeded 2s for POST /api/orders (8758ms)
+2026-08-24T10:21:26Z WARN Connection pool nearing capacity: 8409/10 connections active
+2026-08-24T10:21:51Z ERROR Authentication token expired for user 586
+2026-08-24T10:21:05Z FATAL Critical: Database connection pool exhausted — 9205/10 connections active for over 13s
+2026-08-24T10:22:06Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:22:02Z ERROR Failed to deserialize response from payment-service: unexpected token at position 7269
+2026-08-24T10:22:58Z INFO Request completed: GET /api/products in 1693ms
+2026-08-24T10:22:39Z INFO Scheduled job check-orders completed in 1264ms
+2026-08-24T10:22:02Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 440ms
+2026-08-24T10:22:11Z FATAL Out of memory: heap allocation failed for 3714MB request
+2026-08-24T10:22:17Z FATAL Out of memory: heap allocation failed for 6067MB request
+2026-08-24T10:22:18Z WARN Deprecated endpoint /api/v1/users called from IP 2542.115.6684.42
+2026-08-24T10:22:37Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:22:28Z INFO Cache hit for key user:3880
+2026-08-24T10:22:36Z FATAL Out of memory: heap allocation failed for 6970MB request
+2026-08-24T10:22:09Z WARN Connection pool nearing capacity: 6256/10 connections active
+2026-08-24T10:22:55Z INFO Connection pool: 6749/10 active connections
+2026-08-24T10:22:13Z FATAL Out of memory: heap allocation failed for 8391MB request
+2026-08-24T10:22:21Z INFO Request completed: GET /api/products in 3071ms
+2026-08-24T10:22:13Z INFO Scheduled job check-orders completed in 2655ms
+2026-08-24T10:22:48Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:22:32Z WARN Response time exceeded 2s for POST /api/orders (8811ms)
+2026-08-24T10:22:08Z INFO Connection pool: 1019/10 active connections
+2026-08-24T10:22:40Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:22:10Z ERROR Database connection failed: timeout after 41540ms
+2026-08-24T10:23:26Z INFO Connection pool: 1526/10 active connections
+2026-08-24T10:23:31Z INFO Cache hit for key user:2884
+2026-08-24T10:23:31Z INFO Request completed: GET /api/health in 9689ms
+2026-08-24T10:23:45Z FATAL Out of memory: heap allocation failed for 8604MB request
+2026-08-24T10:23:41Z ERROR Failed to deserialize response from payment-service: unexpected token at position 4153
+2026-08-24T10:23:11Z INFO Rate limit status: 5503/100 requests used
+2026-08-24T10:23:48Z WARN Deprecated endpoint /api/v1/users called from IP 5289.90.3503.56
+2026-08-24T10:23:33Z ERROR Database connection failed: timeout after 5229ms
+2026-08-24T10:23:26Z INFO Connection pool: 1649/10 active connections
+2026-08-24T10:23:43Z WARN Connection pool nearing capacity: 3224/10 connections active
+2026-08-24T10:23:18Z INFO Rate limit status: 7782/100 requests used
+2026-08-24T10:23:40Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:23:14Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 1943ms
+2026-08-24T10:23:01Z FATAL Out of memory: heap allocation failed for 8699MB request
+2026-08-24T10:23:16Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:23:00Z ERROR Database connection failed: timeout after 6780ms
+2026-08-24T10:23:55Z INFO Health check passed — all services reachable
+2026-08-24T10:23:17Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:23:53Z INFO Scheduled job check-orders completed in 1682ms
+2026-08-24T10:23:44Z ERROR Cache write failed: Redis connection refused after 1370 retries
+2026-08-24T10:23:15Z INFO Request completed: GET /api/products in 6153ms
+2026-08-24T10:24:53Z WARN Memory usage: 4013% of heap threshold
+2026-08-24T10:24:36Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:24:58Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:24:37Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 590ms
+2026-08-24T10:24:19Z INFO Cache hit for key user:2511
+2026-08-24T10:24:51Z FATAL Out of memory: heap allocation failed for 7342MB request
+2026-08-24T10:24:55Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 3022ms
+2026-08-24T10:24:04Z WARN Deprecated endpoint /api/v1/users called from IP 1759.92.7653.4
+2026-08-24T10:24:18Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:24:26Z FATAL Critical: Database connection pool exhausted — 5781/10 connections active for over 1s
+2026-08-24T10:24:13Z ERROR Cache write failed: Redis connection refused after 5063 retries
+2026-08-24T10:24:32Z INFO Request completed: GET /api/products in 3380ms
+2026-08-24T10:24:17Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x4726
+2026-08-24T10:24:51Z WARN Memory usage: 8025% of heap threshold
+2026-08-24T10:24:24Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 2607ms
+2026-08-24T10:24:45Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 9594ms
+2026-08-24T10:24:48Z INFO Cache hit for key user:318
+2026-08-24T10:24:19Z INFO Health check passed — all services reachable
+2026-08-24T10:24:24Z INFO Cache hit for key user:2193
+2026-08-24T10:24:27Z INFO Scheduled job check-orders completed in 6001ms
+2026-08-24T10:24:22Z INFO Cache hit for key user:8640
+2026-08-24T10:24:44Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:24:31Z ERROR Database connection failed: timeout after 40193ms
+2026-08-24T10:25:45Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:25:40Z WARN Response time exceeded 2s for POST /api/orders (7236ms)
+2026-08-24T10:25:06Z INFO Scheduled job check-orders completed in 678ms
+2026-08-24T10:25:41Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:26:54Z ERROR Failed to deserialize response from payment-service: unexpected token at position 6410
+2026-08-24T10:26:33Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 9103ms
+2026-08-24T10:26:50Z WARN Connection pool nearing capacity: 788/10 connections active
+2026-08-24T10:26:41Z FATAL Critical: Database connection pool exhausted — 5294/10 connections active for over 86s
+2026-08-24T10:26:51Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x5291
+2026-08-24T10:27:48Z FATAL Critical: Database connection pool exhausted — 559/10 connections active for over 86s
+2026-08-24T10:27:33Z FATAL Out of memory: heap allocation failed for 8400MB request
+2026-08-24T10:27:04Z ERROR Message broker: failed to publish event OrderPlaced to exchange orders
+2026-08-24T10:27:37Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 7084ms
+2026-08-24T10:27:32Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x7247
+2026-08-24T10:27:11Z INFO Request completed: GET /api/health in 6368ms
+2026-08-24T10:27:03Z INFO Request completed: GET /api/products in 9887ms
+2026-08-24T10:27:36Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:28:12Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 3095ms
+2026-08-24T10:28:38Z WARN Connection pool nearing capacity: 8791/10 connections active
+2026-08-24T10:28:36Z WARN Retry attempt 2/3 for external payment gateway timeout
+2026-08-24T10:28:33Z WARN Connection pool nearing capacity: 7726/10 connections active
+2026-08-24T10:28:44Z ERROR Cache write failed: Redis connection refused after 1466 retries
+2026-08-24T10:28:17Z WARN Deprecated endpoint /api/v1/users called from IP 7873.13.3353.36
+2026-08-24T10:28:18Z ERROR GET /api/users/8275 500 — User profile not found but schema mismatch
+2026-08-24T10:28:01Z FATAL Out of memory: heap allocation failed for 6482MB request
+2026-08-24T10:28:22Z ERROR Cache write failed: Redis connection refused after 1472 retries
+2026-08-24T10:28:24Z INFO Scheduled job check-orders completed in 4356ms
+2026-08-24T10:28:20Z INFO Request completed: GET /api/health in 3581ms
+2026-08-24T10:29:35Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:29:06Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 1662ms
+2026-08-24T10:29:46Z FATAL Fatal error in order-processor worker: segmentation fault at address 0x1051
+2026-08-24T10:29:44Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:29:34Z INFO Cache hit for key user:2365
+2026-08-24T10:29:44Z INFO Request completed: GET /api/health in 4261ms
+2026-08-24T10:29:47Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:29:10Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:29:24Z WARN Queue backlog: 980 messages pending in order-processing
+2026-08-24T10:30:59Z INFO Health check passed — all services reachable
+2026-08-24T10:30:24Z INFO Request completed: GET /api/health in 2136ms
+2026-08-24T10:30:50Z INFO Rate limit status: 8446/100 requests used
+2026-08-24T10:30:59Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 5080ms
+2026-08-24T10:30:26Z INFO Request completed: GET /api/health in 4538ms
+2026-08-24T10:30:37Z INFO Request completed: GET /api/health in 6281ms
+2026-08-24T10:31:45Z INFO Cache hit for key user:4254
+2026-08-24T10:31:25Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:31:21Z INFO Request completed: GET /api/health in 6606ms
+2026-08-24T10:31:21Z ERROR Cache write failed: Redis connection refused after 5153 retries
+2026-08-24T10:31:28Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 5565ms
+2026-08-24T10:32:44Z INFO Request completed: GET /api/products in 3887ms
+2026-08-24T10:32:27Z INFO Request completed: POST /api/users in 3045ms
+2026-08-24T10:32:39Z INFO Request completed: GET /api/health in 7405ms
+2026-08-24T10:32:08Z INFO Cache hit for key user:1359
+2026-08-24T10:32:35Z ERROR GET /api/users/6914 500 — User profile not found but schema mismatch
+2026-08-24T10:32:26Z ERROR POST /api/orders 503 Service Unavailable — upstream connection reset
+2026-08-24T10:32:32Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 9213ms
+2026-08-24T10:32:17Z WARN Deprecated endpoint /api/v1/users called from IP 6024.60.6629.8
+2026-08-24T10:32:02Z WARN Response time exceeded 2s for POST /api/orders (3091ms)
+2026-08-24T10:33:04Z FATAL Disk write failure: no space left on device in /var/log/applications
+2026-08-24T10:33:31Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 5887ms
+2026-08-24T10:33:19Z ERROR Authentication token expired for user 6438
+2026-08-24T10:33:50Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 7944ms
+2026-08-24T10:33:40Z FATAL Out of memory: heap allocation failed for 8257MB request
+2026-08-24T10:34:59Z WARN Connection pool nearing capacity: 3993/10 connections active
+2026-08-24T10:34:26Z WARN Deprecated endpoint /api/v1/users called from IP 9881.10.9915.116
+2026-08-24T10:34:36Z FATAL Critical: Database connection pool exhausted — 5005/10 connections active for over 79s
+2026-08-24T10:34:41Z INFO Scheduled job check-orders completed in 9342ms
+2026-08-24T10:34:00Z FATAL Critical: Database connection pool exhausted — 2987/10 connections active for over 49s
+2026-08-24T10:34:22Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 6024ms
+2026-08-24T10:35:11Z INFO Health check passed — all services reachable
+2026-08-24T10:35:01Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 1909ms
+2026-08-24T10:35:40Z ERROR POST /api/orders 500 Internal Server Error — database timeout after 2595ms
+2026-08-24T10:35:33Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:35:08Z ERROR TypeError: Cannot read properties of undefined (reading 'id')
+2026-08-24T10:35:17Z ERROR GET /api/products/search 500 — Elasticsearch query timeout after 982ms
+2026-08-24T10:35:42Z WARN Slow query detected: SELECT * FROM orders WHERE status='pending' took 8589ms

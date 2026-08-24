@@ -230,6 +230,7 @@ export interface Incident {
     uniqueErrorGroups: number;
     criticalErrors: number;
     totalRequests: number;
+    totalLogEntries: number;
     overallErrorRate: number;
     correlationCount: number;
   };
@@ -274,6 +275,7 @@ export interface DashboardData {
     uniqueErrorGroups: number;
     criticalErrors: number;
     totalRequests: number;
+    totalLogEntries: number;
     overallErrorRate: number;
     correlationCount: number;
   };
