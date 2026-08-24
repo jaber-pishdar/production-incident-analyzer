@@ -119,14 +119,14 @@ function parsePythonLogs(input: string, env: string, service: string): LogEvent[
 
     if (!m1 && !m2) { i++; continue; }
 
-    const match = m1 || m2;
+    const match = (m1 || m2)!;
     const timestamp = m1 ? m1[1] : new Date().toISOString();
     let level = m1 ? m1[2] : m2![1];
 
     if (level.toUpperCase() === 'CRITICAL') level = 'fatal';
     if (level.toUpperCase() === 'WARNING') level = 'warn';
 
-    const afterLevel = line.slice(match[0].length).trim();
+    const afterLevel = line.slice(match![0].length).trim();
     // Strip leading "- " that the Python format leaves as separator
     const cleanMessage = afterLevel.replace(/^-\s+/, '');
     const msgLines: string[] = [];

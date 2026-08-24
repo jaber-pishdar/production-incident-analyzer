@@ -105,7 +105,7 @@ export interface StageBreakdown {
 export interface SlowRequest {
   traceId: string;
   method: string;
-  endpoint: string;
+  endpoint?: string;
   durationMs: number;
   thresholdMs: number;
   slowStage: ProcessingStage | null;
@@ -116,7 +116,7 @@ export interface SlowRequest {
 export interface TimeoutEvent {
   traceId: string;
   method: string;
-  endpoint: string;
+  endpoint?: string;
   durationMs: number;
   timeoutMs: number;
   timestamp: string;
