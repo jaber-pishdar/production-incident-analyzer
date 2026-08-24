@@ -47,6 +47,47 @@ describe('buildIncident', () => {
     expect(incident.symptoms.length).toBeGreaterThanOrEqual(1);
   });
 
+  it('sets correct startedAt from earliest event', () => {
+    const errors = [
+      makeError('2026-08-22T10:05:00Z', 'DB timeout'),
+      makeError('2026-08-22T10:10:00Z', 'TypeError: cannot read'),
+    ];
+    const traces = [
+      makeTrace('t1', '2026-08-22T10:00:00Z', 200, 200),
+      makeTrace('t2', '2026-08-22T10:02:00Z', 4800, 500),
+    ];
+
+    const incident = buildIncident({ logs: [], errors, traces, deployments: [] });
+    expect(incident.startedAt).toBe('2026-08-22T10:00:00Z');
+  });
+
+  it('has timeline events', () => {
+    const errors = [
+      makeError('2026-08-22T10:05:00Z', 'DB timeout'),
+      makeError('2026-08-22T10:06:00Z', 'DB timeout'),
+    ];
+    const traces = [
+      makeTrace('t1', '2026-08-22T10:04:00Z', 4800, 500),
+    ];
+    const incident = buildIncident({ logs: [], errors, traces, deployments: [] });
+    expect(incident.timeline).toBeDefined();
+    expect(incident.timeline.length).toBeGreaterThan(0);
+  });
+
+  it('has symptoms', () => {
+    const errors = [
+      makeError('2026-08-22T10:05:00Z', 'DB timeout'),
+      makeError('2026-08-22T10:06:00Z', 'DB timeout'),
+      makeError('2026-08-22T10:07:00Z', 'DB timeout'),
+    ];
+    const traces = [
+      makeTrace('t1', '2026-08-22T10:04:00Z', 4800, 500),
+    ];
+    const incident = buildIncident({ logs: [], errors, traces, deployments: [] });
+    expect(incident.symptoms).toBeDefined();
+    expect(incident.symptoms.length).toBeGreaterThanOrEqual(1);
+  });
+
   it('includes error spike symptoms', () => {
     const logs = [
       makeLog('2026-08-22T10:05:00Z', 'ERROR', 'POST /api/orders 500 crash'),

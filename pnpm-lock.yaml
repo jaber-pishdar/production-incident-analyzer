@@ -26,6 +26,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@pia/correlation-engine':
+        specifier: workspace:*
+        version: link:../../packages/correlation-engine
       '@pia/error-analyzer':
         specifier: workspace:*
         version: link:../../packages/error-analyzer
@@ -155,6 +158,31 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.9.3
+
+  tests:
+    dependencies:
+      '@pia/correlation-engine':
+        specifier: workspace:*
+        version: link:../packages/correlation-engine
+      '@pia/error-analyzer':
+        specifier: workspace:*
+        version: link:../packages/error-analyzer
+      '@pia/incident-engine':
+        specifier: workspace:*
+        version: link:../packages/incident-engine
+      '@pia/performance-analyzer':
+        specifier: workspace:*
+        version: link:../packages/performance-analyzer
+      '@pia/shared':
+        specifier: workspace:*
+        version: link:../packages/shared
+    devDependencies:
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.43)(supports-color@8.1.1)
 
 packages:
 

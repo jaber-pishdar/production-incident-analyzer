@@ -79,6 +79,17 @@ describe('detectSlowRequests', () => {
     expect(slow).toHaveLength(1);
     expect(slow[0].traceId).toBe('t2');
   });
+
+  it('uses default threshold of 2000ms', () => {
+    const traces = [
+      makeTrace({ id: 't1', durationMs: 1500 }),
+      makeTrace({ id: 't2', durationMs: 2500 }),
+    ];
+    const slow = detectSlowRequests(traces);
+    expect(slow).toHaveLength(1);
+    expect(slow[0].traceId).toBe('t2');
+    expect(slow[0].thresholdMs).toBe(2000);
+  });
 });
 
 // ─── 5. Timeout events ─── //

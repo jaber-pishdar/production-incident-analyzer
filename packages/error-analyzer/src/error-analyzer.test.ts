@@ -213,6 +213,23 @@ describe('groupErrors', () => {
     expect(groupErrors(errors)).toHaveLength(2);
   });
 
+  it('sorts by count descending', () => {
+    const logs = parseLogs([
+      '2026-08-22T10:00:00Z ERROR error A',
+      '2026-08-22T10:01:00Z ERROR error A',
+      '2026-08-22T10:02:00Z ERROR error A',
+      '2026-08-22T10:03:00Z ERROR error B',
+      '2026-08-22T10:04:00Z ERROR error B',
+      '2026-08-22T10:05:00Z ERROR error C',
+    ].join('\n'));
+    const errors = promoteToErrorEvents(logs);
+    const groups = groupErrors(errors);
+    expect(groups).toHaveLength(3);
+    expect(groups[0].count).toBe(3); // error A: 3 occurrences
+    expect(groups[1].count).toBe(2); // error B: 2 occurrences
+    expect(groups[2].count).toBe(1); // error C: 1 occurrence
+  });
+
   it('tracks firstSeen and lastSeen', () => {
     const logs = parseLogs([
       '2026-08-22T10:00:00Z ERROR same',
@@ -237,6 +254,22 @@ describe('detectSpikes', () => {
       { time: '14:00', count: 5 },
     ];
     const result = detectSpikes(buckets, 3);
+    expect(result.detected).toBe(true);
+    expect(result.spikeBuckets).toHaveLength(1);
+    expect(result.spikeBuckets[0].count).toBe(80);
+  });
+
+  it('returns correct spike count when using multiplier=2', () => {
+    const buckets = [
+      { time: '10:00', count: 2 },
+      { time: '11:00', count: 3 },
+      { time: '12:00', count: 50 },
+      { time: '13:00', count: 80 },
+      { time: '14:00', count: 5 },
+    ];
+    // mean = (2+3+50+80+5)/5 = 28, threshold = 28*2 = 56
+    // 80 > 56 → 1 spike bucket
+    const result = detectSpikes(buckets, 2);
     expect(result.detected).toBe(true);
     expect(result.spikeBuckets).toHaveLength(1);
     expect(result.spikeBuckets[0].count).toBe(80);
