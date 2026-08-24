@@ -216,7 +216,14 @@ export interface Incident {
   status: 'open' | 'investigating' | 'resolved';
   severity: Severity;
   generatedAt: string;
+  startedAt: string;
   resolvedAt?: string;
+  duration: string;       // human-readable, e.g. "45 minutes"
+  affectedEndpoints: string[];
+  affectedServices: string[];
+  symptoms: Symptom[];
+  possibleRootCause: string;
+  rootCauseConfidence: 'low' | 'medium' | 'high';
   timeWindow: { from: string; to: string };
   summary: {
     totalErrors: number;
@@ -231,6 +238,16 @@ export interface Incident {
   endpoints: Endpoint[];
   correlations: CorrelationSignal[];
   rootCauseSignals: CorrelationSignal[];
+}
+
+export interface Symptom {
+  type: 'error_spike' | 'latency_spike' | 'timeout_wave' | 'bottleneck' | 'deployment' | 'error_wave';
+  description: string;
+  severity: Severity;
+  metric: string;
+  beforeValue: string;
+  afterValue: string;
+  ratio: number;
 }
 
 // ─── Utility Types ─── //
