@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// ─── Add after lines ─── //
 import { errorAnalyzer } from '@pia/error-analyzer';
 import { performanceAnalyzer } from '@pia/performance-analyzer';
 import { correlationEngine } from '@pia/correlation-engine';
@@ -197,6 +198,15 @@ app.get('/api/timeline/:incidentId', (req, res) => {
 });
 
 // ─── Listen ─── //
+
+// Reset: clear all data
+app.post('/api/reset', (_req, res) => {
+  currentLogs = [];
+  currentTraces = [];
+  currentDeployments = [];
+  incidents = [];
+  res.json({ ok: true });
+});
 
 app.listen(PORT, () => {
   console.log(`PIA running on http://localhost:${PORT}`);

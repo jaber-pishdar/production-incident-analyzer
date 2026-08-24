@@ -54,6 +54,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 .btn-primary:disabled { background: #334155; cursor: not-allowed; }
 .btn-primary:hover:not(:disabled) { background: #2563eb; }
 
+.btn-reset { padding: 5px 14px; background: #7f1d1d; color: #fca5a5; border: 1px solid #991b1b; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+.btn-reset:hover:not(:disabled) { background: #991b1b; }
+.btn-reset:disabled { background: #1e293b; border-color: #334155; color: #64748b; cursor: not-allowed; }
+
 /* ─── Incident Card ─── */
 .incident-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .incident-id { font-size: 1.25rem; font-weight: 700; color: #f1f5f9; margin-right: 12px; }

@@ -5,7 +5,7 @@ import IncidentCard from './components/IncidentCard';
 import TimelineView from './components/TimelineView';
 import EvidencePanel from './components/EvidencePanel';
 import InvestigationView from './components/InvestigationView';
-import { postParse, postTraces, getIncident, getDashboard } from './api';
+import { postParse, postTraces, getIncident, getDashboard, postReset } from './api';
 import './styles.css';
 
 export default function App() {
@@ -54,6 +54,19 @@ export default function App() {
     finally { setLoading(false); }
   };
 
+  const handleReset = async () => {
+    setLoading(true);
+    try {
+      await postReset();
+      setDashboard(null);
+      setIncident(null);
+      setLogsInput('');
+      setTracesInput('');
+      setActiveTab('dashboard');
+    } catch (e) { console.error(e); }
+    finally { setLoading(false); }
+  };
+
   const latencyPercent = dashboard?.endpoints?.length
     ? Math.round(dashboard.endpoints.reduce((s, e) => s + e.p95Ms, 0) / dashboard.endpoints.length / 10)
     : 0;
@@ -66,6 +79,7 @@ export default function App() {
           <button className="tab-btn" data-active={activeTab === 'dashboard'} onClick={() => setActiveTab('dashboard')}>Dashboard</button>
           <button className="tab-btn" data-active={activeTab === 'incident'} onClick={() => setActiveTab('incident')}>Incident</button>
           <button className="tab-btn" data-active={activeTab === 'investigate'} onClick={() => setActiveTab('investigate')}>Investigate</button>
+          <button className="btn-reset" onClick={handleReset} disabled={loading}>Reset</button>
           <a className="header-link" href="https://github.com/jaber-pishdar/production-incident-analyzer" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </header>

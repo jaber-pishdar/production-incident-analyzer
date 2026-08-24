@@ -27,3 +27,9 @@ export async function getIncident() {
   const res = await fetch(`${BASE}/api/incident`);
   return res.json() as Promise<Incident>;
 }
+
+export async function postReset() {
+  const res = await fetch(`${BASE}/api/reset`, { method: 'POST' });
+  if (!res.ok) throw new Error(`Reset failed: ${res.status}`);
+  return res.json() as Promise<{ ok: boolean }>;
+}
