@@ -11,7 +11,7 @@ import type { LogEvent, RequestTrace, Deployment, Incident } from '@pia/shared';
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const frontendDist = path.resolve(__dirname, '../web/dist');
+const frontendDist = path.resolve(__dirname, '../../web/dist');
 
 app.use(express.static(frontendDist));
 app.use(cors());
