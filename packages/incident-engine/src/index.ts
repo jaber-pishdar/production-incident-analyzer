@@ -1,6 +1,7 @@
 import type {
   LogEvent, ErrorEvent, RequestTrace, ErrorGroup, Endpoint, Deployment,
   CorrelationSignal, Incident, DashboardData, Symptom, PerformanceReport, Severity,
+  TimelineEvent,
 } from '@pia/shared';
 import { errorAnalyzer } from '@pia/error-analyzer';
 import { performanceAnalyzer } from '@pia/performance-analyzer';
@@ -192,6 +193,9 @@ export function buildIncident(params: {
     to: endedAt,
   };
 
+  // Build timeline
+  const timeline = buildTimeline(params, db, perf, symptoms, rootCauseSignals, timeWindow);
+
   return {
     id: `INC-${String(++incId).padStart(4, '0')}`,
     title,
@@ -212,10 +216,125 @@ export function buildIncident(params: {
     endpoints: db.endpoints,
     correlations: db.correlations,
     rootCauseSignals,
+    timeline,
   };
 }
 
 // ─── Helpers ─── //
+
+function buildTimeline(
+  params: { logs: LogEvent[]; errors: ErrorEvent[]; traces: RequestTrace[]; deployments: Deployment[] },
+  db: DashboardData,
+  perf: PerformanceReport,
+  symptoms: Symptom[],
+  rootCauseSignals: CorrelationSignal[],
+  timeWindow: { from: string; to: string },
+): TimelineEvent[] {
+  const events: TimelineEvent[] = [];
+
+  // 1. Normal traffic (baseline)
+  const earliest = timeWindow.from;
+  events.push({
+    id: 'tl-normal', timestamp: earliest, type: 'normal',
+    title: 'Normal traffic',
+    description: 'Traffic at normal levels with baseline latency and error rates.',
+  });
+
+  // 2. Deployments
+  for (const dep of params.deployments) {
+    events.push({
+      id: `tl-dep-${dep.id}`, timestamp: dep.deployedAt, type: 'deployment',
+      title: `Deployment ${dep.version}`,
+      description: `Deployed to ${dep.service} (${dep.environment}).${dep.description ? ` ${dep.description}` : ''}`,
+      severity: 'warning',
+      metadata: { version: dep.version, service: dep.service },
+    });
+  }
+
+  // 3. Latency increases
+  for (const bn of perf.bottlenecks.slice(0, 3)) {
+    const ts = findFirstTraceTime(params.traces, bn.service);
+    if (!ts) continue;
+    events.push({
+      id: `tl-lat-${bn.service}-${bn.spanType}`, timestamp: ts, type: 'latency_increase',
+      title: `${bn.stage ?? bn.spanType} latency starts increasing`,
+      description: bn.description,
+      severity: bn.impact === 'critical' ? 'critical' : 'high',
+      metadata: { service: bn.service, p95Ms: bn.p95Ms },
+    });
+  }
+
+  // 4. Latency spikes
+  for (const spike of perf.latencySpikes.slice(0, 3)) {
+    events.push({
+      id: `tl-spike-${spike.endpointKey}`, timestamp: spike.timeWindow, type: 'latency_increase',
+      title: `API latency spike detected on ${spike.method} ${spike.path}`,
+      description: `Latency jumped from ${spike.baselineAvgMs}ms to ${spike.spikeAvgMs}ms (${spike.ratio}x).`,
+      severity: spike.ratio > 5 ? 'critical' : 'high',
+      metadata: { baseline: spike.baselineAvgMs, spike: spike.spikeAvgMs, ratio: spike.ratio },
+    });
+  }
+
+  // 5. Timeout waves
+  if (perf.timeoutEvents.length > 0) {
+    events.push({
+      id: 'tl-timeout', timestamp: perf.timeoutEvents[0].timestamp, type: 'timeout_wave',
+      title: `Timeout wave detected (${perf.timeoutEvents.length} events)`,
+      description: `${perf.timeoutEvents.length} requests exceeded ${perf.timeoutEvents[0].timeoutMs}ms timeout threshold.`,
+      severity: 'critical',
+      metadata: { count: perf.timeoutEvents.length },
+    });
+  }
+
+  // 6. Error spikes
+  for (const g of db.errorGroups.slice(0, 5)) {
+    events.push({
+      id: `tl-err-${g.fingerprint}`, timestamp: g.firstSeen, type: 'error_spike',
+      title: `HTTP error spike detected: "${g.message.slice(0, 45)}"`,
+      description: `Error group appeared ${g.count} times between ${g.firstSeen} and ${g.lastSeen}.`,
+      severity: g.severity,
+      metadata: { count: g.count, fingerprint: g.fingerprint },
+    });
+  }
+
+  // 7. Correlation signals
+  for (const sig of db.correlations.slice(0, 3)) {
+    events.push({
+      id: `tl-corr-${sig.id}`, timestamp: timeWindow.from, type: 'correlation',
+      title: sig.title,
+      description: sig.description,
+      severity: sig.confidence === 'high' ? 'warning' : 'info',
+    });
+  }
+
+  // 8. Incident created
+  events.push({
+    id: 'tl-incident', timestamp: timeWindow.from, type: 'incident_created',
+    title: 'Incident created',
+    description: `Incident opened with ${db.errorGroups.length} error groups and ${db.endpoints.length} affected endpoints.`,
+    severity: 'high',
+  });
+
+  // 9. Root cause signal
+  if (rootCauseSignals.length > 0) {
+    events.push({
+      id: 'tl-rootcause', timestamp: timeWindow.to, type: 'root_cause',
+      title: `Likely root-cause signal generated: ${rootCauseSignals[0].likelyRootCause}`,
+      description: rootCauseSignals[0].description,
+      severity: 'critical',
+      metadata: { confidence: rootCauseSignals[0].confidence },
+    });
+  }
+
+  // Sort by timestamp
+  return events.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+}
+
+function findFirstTraceTime(traces: RequestTrace[], service: string): string | null {
+  const matching = traces.filter((t) => t.service === service);
+  if (matching.length === 0) return null;
+  return matching.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime())[0].timestamp;
+}
 
 function buildTitle(
   affectedEndpoints: Set<string>, rootCauses: CorrelationSignal[], symptoms: Symptom[],

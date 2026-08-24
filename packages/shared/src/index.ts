@@ -238,6 +238,7 @@ export interface Incident {
   endpoints: Endpoint[];
   correlations: CorrelationSignal[];
   rootCauseSignals: CorrelationSignal[];
+  timeline: TimelineEvent[];
 }
 
 export interface Symptom {
@@ -255,6 +256,16 @@ export interface Symptom {
 export interface TimeBucket {
   time: string;
   count: number;
+}
+
+export interface TimelineEvent {
+  id: string;
+  timestamp: string;
+  type: 'normal' | 'deployment' | 'latency_increase' | 'error_spike' | 'timeout_wave' | 'bottleneck' | 'correlation' | 'incident_created' | 'root_cause';
+  title: string;
+  description: string;
+  severity?: Severity;
+  metadata?: Record<string, unknown>;
 }
 
 export interface DashboardData {

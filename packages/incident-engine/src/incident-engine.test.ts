@@ -115,4 +115,39 @@ describe('buildIncident', () => {
     expect(incident.possibleRootCause).toBeDefined();
     expect(incident.rootCauseConfidence).toBeDefined();
   });
+
+  it('builds a timeline with chronological events', () => {
+    const errors = [
+      makeError('2026-08-22T10:14:00Z', 'DB timeout'),
+      makeError('2026-08-22T10:15:00Z', 'DB timeout'),
+      makeError('2026-08-22T10:16:00Z', 'HTTP 500 error'),
+    ];
+    const traces = [
+      makeTrace('t1', '2026-08-22T10:13:00Z', 120, 200),
+      makeTrace('t2', '2026-08-22T10:14:00Z', 4800, 500),
+      makeTrace('t3', '2026-08-22T10:15:00Z', 5200, 500),
+    ];
+    const deployments = [{
+      id: 'dep-1', version: 'v2.8.1', service: 'user-service', environment: 'production',
+      deployedAt: '2026-08-22T10:11:00Z',
+    }];
+
+    const incident = buildIncident({ logs: [], errors, traces, deployments });
+    expect(incident.timeline).toBeDefined();
+    expect(incident.timeline.length).toBeGreaterThanOrEqual(5);
+
+    // Check chronological order
+    for (let i = 1; i < incident.timeline.length; i++) {
+      const prev = new Date(incident.timeline[i - 1].timestamp).getTime();
+      const curr = new Date(incident.timeline[i].timestamp).getTime();
+      expect(prev).toBeLessThanOrEqual(curr);
+    }
+
+    // Check event types exist
+    const types = incident.timeline.map((e) => e.type);
+    expect(types).toContain('normal');
+    expect(types).toContain('deployment');
+    expect(types).toContain('error_spike');
+    expect(types).toContain('incident_created');
+  });
 });
