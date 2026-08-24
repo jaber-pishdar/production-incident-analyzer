@@ -1,45 +1,74 @@
-import type { LogEntry, TraceEntry, DashboardData, ErrorGroup, PerformanceSummary, CorrelationSignal, TimeBucket } from '@pia/shared';
+import type { LogEvent, ErrorEvent, RequestTrace, ErrorGroup, Endpoint, Deployment, CorrelationSignal, Incident, DashboardData, TimeBucket } from '@pia/shared';
 import { errorAnalyzer } from '@pia/error-analyzer';
 import { performanceAnalyzer } from '@pia/performance-analyzer';
 import { correlationEngine } from '@pia/correlation-engine';
 
-export interface IncidentReport {
-  id: string;
-  generatedAt: string;
-  timeWindow: { from: string; to: string };
-  summary: { totalErrors: number; uniqueErrorGroups: number; criticalErrors: number; totalRequests: number; overallErrorRate: number; bottlenecks: number; correlations: number };
-  errorAnalysis: { groups: ErrorGroup[]; timeSeries: TimeBucket[] };
-  performanceAnalysis: { endpoints: import('@pia/shared').EndpointPerformance[]; bottlenecks: import('@pia/shared').Bottleneck[] };
-  correlations: CorrelationSignal[];
-  rootCauseSignals: CorrelationSignal[];
-}
+let incId = 0;
 
-export function buildDashboard(logs: LogEntry[], traces: TraceEntry[]): DashboardData {
-  const groups = errorAnalyzer.groupErrors(logs);
-  const timeSeries = errorAnalyzer.aggregateByTime(logs);
+export function buildDashboard(params: {
+  logs: LogEvent[];
+  errors: ErrorEvent[];
+  traces: RequestTrace[];
+  deployments: Deployment[];
+}): DashboardData {
+  const { logs, errors, traces, deployments } = params;
+  const groups = errorAnalyzer.groupErrors(errors);
+  const timeSeries = errorAnalyzer.aggregateByTime([...logs, ...errors]);
   const perf = performanceAnalyzer.analyzePerformance(traces);
-  const timeWindow = { from: logs[0]?.timestamp ?? new Date().toISOString(), to: logs[logs.length - 1]?.timestamp ?? new Date().toISOString() };
-  const correlations = correlationEngine.correlate(groups, perf, timeWindow);
+  const timeWindow = {
+    from: logs[0]?.timestamp ?? errors[0]?.timestamp ?? new Date().toISOString(),
+    to: logs[logs.length - 1]?.timestamp ?? errors[errors.length - 1]?.timestamp ?? new Date().toISOString(),
+  };
+  const correlations = correlationEngine.correlate({
+    errorGroups: groups, errorEvents: errors, requestTraces: traces,
+    endpoints: perf.endpoints, deployments, timeWindow,
+  });
   const rootCauseSignals = correlationEngine.findRootCause(correlations);
-  const totalErrors = logs.filter((e) => e.level === 'error' || e.level === 'fatal' || e.level === 'critical').length;
+  const totalErrors = errors.length;
   return {
-    summary: { totalErrors, uniqueErrorGroups: groups.length, criticalErrors: groups.filter((g) => g.severity === 'critical').length, totalRequests: perf.totalRequests, overallErrorRate: perf.overallErrorRate, bottlenecks: perf.bottlenecks.length },
-    errorGroups: groups, endpointPerformance: perf.endpoints, bottlenecks: perf.bottlenecks, timeSeries, correlations, rootCauseSignals,
+    summary: {
+      totalErrors,
+      uniqueErrorGroups: groups.length,
+      criticalErrors: groups.filter((g) => g.severity === 'critical').length,
+      totalRequests: perf.totalRequests,
+      overallErrorRate: perf.overallErrorRate,
+      correlationCount: correlations.length,
+    },
+    errorGroups: groups,
+    endpoints: perf.endpoints,
+    timeSeries,
+    correlations,
+    rootCauseSignals,
+    activeDeployments: deployments,
   };
 }
 
-export function buildIncidentReport(logs: LogEntry[], traces: TraceEntry[]): IncidentReport {
-  const dashboard = buildDashboard(logs, traces);
+export function buildIncident(params: {
+  logs: LogEvent[];
+  errors: ErrorEvent[];
+  traces: RequestTrace[];
+  deployments: Deployment[];
+}): Incident {
+  const db = buildDashboard(params);
+  const timeWindow = {
+    from: params.logs[0]?.timestamp ?? params.errors[0]?.timestamp ?? '',
+    to: params.logs[params.logs.length - 1]?.timestamp ?? params.errors[params.errors.length - 1]?.timestamp ?? '',
+  };
+  const topSeverity = db.errorGroups[0]?.severity ?? 'info';
   return {
-    id: `inc-${Date.now()}`,
+    id: `inc-${++incId}`,
+    title: `${db.errorGroups.length} error groups, ${db.endpoints.length} endpoints affected`,
+    status: 'open',
+    severity: topSeverity,
     generatedAt: new Date().toISOString(),
-    timeWindow: { from: logs[0]?.timestamp ?? '', to: logs[logs.length - 1]?.timestamp ?? '' },
-    summary: dashboard.summary,
-    errorAnalysis: { groups: dashboard.errorGroups, timeSeries: dashboard.timeSeries },
-    performanceAnalysis: { endpoints: dashboard.endpointPerformance, bottlenecks: dashboard.bottlenecks },
-    correlations: dashboard.correlations,
-    rootCauseSignals: dashboard.rootCauseSignals,
+    timeWindow,
+    summary: db.summary,
+    deployments: params.deployments,
+    errorGroups: db.errorGroups,
+    endpoints: db.endpoints,
+    correlations: db.correlations,
+    rootCauseSignals: db.rootCauseSignals,
   };
 }
 
-export const incidentEngine = { buildDashboard, buildIncidentReport };
+export const incidentEngine = { buildDashboard, buildIncident };

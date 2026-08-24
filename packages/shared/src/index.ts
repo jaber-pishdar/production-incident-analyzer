@@ -1,52 +1,81 @@
-// ─── Log Entry (from Error Analysis Engine) ─── //
+// ─── Event Context (base for all observability events) ─── //
+// Every event carries these fields, enabling correlation across
+// all 6 dimensions: requestId, traceId, endpoint, service, time, deploymentVersion.
 
-export interface LogEntry {
+export interface EventContext {
+  timestamp: string;        // ISO-8601
+  service: string;
+  environment: string;
+  endpoint?: string;        // e.g. "POST /api/orders"
+  requestId?: string;       // correlates errors ↔ traces
+  traceId?: string;         // correlates errors ↔ traces
+  deploymentVersion?: string; // correlates errors with deployments
+}
+
+// ─── LogEvent ─── //
+// A raw log line, minimally parsed. Error-level logs can be promoted to ErrorEvent.
+
+export interface LogEvent extends EventContext {
   id: string;
-  timestamp: string;
-  level: 'info' | 'warn' | 'error' | 'fatal' | 'critical' | 'debug';
+  level: 'debug' | 'info' | 'warn' | 'error' | 'fatal';
   message: string;
-  source: string;
-  service?: string;
-  environment?: string;
-  method?: string;
-  endpoint?: string;
-  statusCode?: number;
-  responseTimeMs?: number;
+  logger?: string;
+  method?: string;          // HTTP method extracted from message
+  statusCode?: number;      // HTTP status extracted from message
+  responseTimeMs?: number;  // latency extracted from message
   stackTrace?: string;
   errorType?: string;
   raw: string;
 }
 
-export interface ErrorGroup {
-  fingerprint: string;
+// ─── ErrorEvent ─── //
+// A significant error extracted from logs or other sources.
+// Multiple identical ErrorEvents are grouped into an ErrorGroup.
+
+export interface ErrorEvent extends EventContext {
+  id: string;
+  level: 'error' | 'fatal';
   message: string;
-  level: LogEntry['level'];
-  source: string;
-  service?: string;
+  errorType: string;
   category: ErrorCategory;
   severity: Severity;
-  count: number;
-  firstSeen: string;
-  lastSeen: string;
   stackTrace?: string;
-  endpoints: string[];
+  statusCode?: number;
+  count: number;            // occurrences of this exact error in this event
+  fingerprint: string;      // stable hash for grouping
+  logIds: string[];         // references to source LogEvents
 }
 
 export type ErrorCategory = 'database' | 'network' | 'auth' | 'application' | 'unknown';
 export type Severity = 'info' | 'low' | 'warning' | 'high' | 'critical';
 
-// ─── Trace Entry (from Performance Analysis Engine) ─── //
+// ─── ErrorGroup ─── //
+// Multiple identical ErrorEvents grouped by fingerprint.
 
-export interface TraceEntry {
+export interface ErrorGroup {
+  fingerprint: string;
+  message: string;
+  errorType: string;
+  category: ErrorCategory;
+  severity: Severity;
+  service: string;
+  environment: string;
+  count: number;
+  firstSeen: string;
+  lastSeen: string;
+  stackTrace?: string;
+  endpoints: string[];
+  deploymentVersions: string[];
+}
+
+// ─── RequestTrace ─── //
+// A traced request through the system.
+
+export interface RequestTrace extends EventContext {
   id: string;
-  traceId: string;
-  timestamp: string;
   method: string;
-  endpoint: string;
   statusCode: number;
   durationMs: number;
-  service: string;
-  environment?: string;
   spans: Span[];
   error?: string;
 }
@@ -60,9 +89,14 @@ export interface Span {
   detail?: string;
 }
 
-export interface EndpointPerformance {
+// ─── Endpoint ─── //
+// Aggregated performance data for a single HTTP endpoint.
+
+export interface Endpoint {
   method: string;
-  endpoint: string;
+  path: string;
+  service: string;
+  environment: string;
   totalRequests: number;
   errorCount: number;
   errorRate: number;
@@ -72,98 +106,99 @@ export interface EndpointPerformance {
   avgMs: number;
   maxMs: number;
   trend: 'stable' | 'increasing' | 'decreasing';
+  deploymentVersion?: string;
 }
 
-export interface PerformanceSummary {
-  endpoints: EndpointPerformance[];
-  slowestEndpoint: EndpointPerformance | null;
-  totalRequests: number;
-  totalErrors: number;
-  overallErrorRate: number;
-  bottlenecks: Bottleneck[];
+// ─── Service ─── //
+// Known service metadata.
+
+export interface Service {
+  name: string;
+  environment: string;
+  endpoints: string[];
+  deploymentVersion?: string;
 }
 
-export interface Bottleneck {
-  spanType: Span['type'];
+// ─── Deployment ─── //
+// A deployment/release event.
+
+export interface Deployment {
+  id: string;
+  version: string;
   service: string;
-  avgMs: number;
-  p95Ms: number;
-  impact: 'low' | 'medium' | 'high' | 'critical';
-  description: string;
+  environment: string;
+  deployedAt: string;
+  description?: string;
+  commitSha?: string;
 }
 
-// ─── Correlation ─── //
+// ─── CorrelationSignal ─── //
+// A detected relationship between two or more events.
 
 export interface CorrelationSignal {
   id: string;
-  type: 'error-performance' | 'error-error' | 'performance-performance';
+  type: 'error-error' | 'error-trace' | 'error-endpoint' | 'trace-bottleneck' | 'deployment-regression';
   confidence: 'low' | 'medium' | 'high';
   title: string;
   description: string;
-  errorGroup?: ErrorGroup;
-  performanceIssue?: EndpointPerformance | Bottleneck;
+  // Correlated entities
+  errorEvents?: ErrorEvent[];
+  requestTraces?: RequestTrace[];
+  endpoint?: Endpoint;
+  deployment?: Deployment;
+  // How the correlation was made
+  matchBy: ('requestId' | 'traceId' | 'endpoint' | 'service' | 'timeWindow' | 'deploymentVersion')[];
   timeWindow: { from: string; to: string };
-  relatedSignals: string[];
 }
 
-export interface IncidentReport {
+// ─── Incident ─── //
+// A complete incident combining errors, traces, and correlations.
+
+export interface Incident {
   id: string;
+  title: string;
+  status: 'open' | 'investigating' | 'resolved';
+  severity: Severity;
   generatedAt: string;
-  timeRange: { from: string; to: string };
+  resolvedAt?: string;
+  timeWindow: { from: string; to: string };
   summary: {
     totalErrors: number;
     uniqueErrorGroups: number;
     criticalErrors: number;
     totalRequests: number;
     overallErrorRate: number;
-    bottlenecks: number;
-    correlations: number;
+    correlationCount: number;
   };
-  errorAnalysis: {
-    groups: ErrorGroup[];
-    timeSeries: TimeBucket[];
-  };
-  performanceAnalysis: {
-    endpoints: EndpointPerformance[];
-    bottlenecks: Bottleneck[];
-  };
+  deployments: Deployment[];
+  errorGroups: ErrorGroup[];
+  endpoints: Endpoint[];
   correlations: CorrelationSignal[];
   rootCauseSignals: CorrelationSignal[];
 }
+
+// ─── Utility Types ─── //
 
 export interface TimeBucket {
   time: string;
   count: number;
 }
 
-// ─── Engine Interfaces ─── //
-
-export interface ErrorAnalysisEngine {
-  name: 'error-analysis';
-  ingest(logs: string): LogEntry[];
-  group(): ErrorGroup[];
-  classify(group: ErrorGroup): Severity;
-  getTimeSeries(interval?: string): TimeBucket[];
-  detectRegression(releaseTime: string): RegressionResult;
-  getGroups(): ErrorGroup[];
-}
-
-export interface PerformanceAnalysisEngine {
-  name: 'performance-analysis';
-  ingest(traces: TraceEntry[]): void;
-  analyze(): PerformanceSummary;
-  getEndpoints(): EndpointPerformance[];
-  getBottlenecks(): Bottleneck[];
-}
-
-export interface CorrelationEngine {
-  name: 'correlation';
-  correlate(
-    errorGroups: ErrorGroup[],
-    performanceSummary: PerformanceSummary,
-    timeWindow: { from: string; to: string },
-  ): CorrelationSignal[];
-  findRootCause(signals: CorrelationSignal[]): CorrelationSignal[];
+export interface DashboardData {
+  summary: {
+    totalErrors: number;
+    uniqueErrorGroups: number;
+    criticalErrors: number;
+    totalRequests: number;
+    overallErrorRate: number;
+    correlationCount: number;
+  };
+  errorGroups: ErrorGroup[];
+  endpoints: Endpoint[];
+  timeSeries: TimeBucket[];
+  correlations: CorrelationSignal[];
+  rootCauseSignals: CorrelationSignal[];
+  activeDeployments: Deployment[];
 }
 
 export interface RegressionResult {
@@ -173,23 +208,4 @@ export interface RegressionResult {
   ratio: number;
   releaseTime: string;
   message: string;
-}
-
-// ─── Dashboard Data ─── //
-
-export interface DashboardData {
-  summary: {
-    totalErrors: number;
-    uniqueErrorGroups: number;
-    criticalErrors: number;
-    totalRequests: number;
-    overallErrorRate: number;
-    bottlenecks: number;
-  };
-  errorGroups: ErrorGroup[];
-  endpointPerformance: EndpointPerformance[];
-  bottlenecks: Bottleneck[];
-  timeSeries: TimeBucket[];
-  correlations: CorrelationSignal[];
-  rootCauseSignals: CorrelationSignal[];
 }
